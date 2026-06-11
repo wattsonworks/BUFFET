@@ -1,975 +1,975 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Elia Voss® — UX/UI Designer & Creative Developer</title>
-  <meta name="description" content="Elia Voss is a UX/UI designer and creative developer crafting award-winning digital products, interfaces and interactive experiences. A fictional portfolio concept built with GSAP and Three.js.">
+  <title>לה בופה · בוקר בעיר העתיקה של צפת — La Buffet</title>
+  <meta name="description" content="לה בופה — ארוחת הבוקר של The Way Inn בצפת. לחם חם, שולחן סלטים ים-תיכוני ואור גליל בבית אבן בן 250 שנה ברובע האמנים.">
+  <!-- Design concept of the live business page — kept out of the index so it never competes with wattsonworks.github.io/labuffet -->
+  <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://wattsonworks.github.io/BUFFET/">
-  <meta name="theme-color" content="#0a0a0c">
-  <meta property="og:title" content="Elia Voss® — UX/UI Designer & Creative Developer">
-  <meta property="og:description" content="Designing digital products that feel inevitable. Interfaces, motion, WebGL.">
+  <meta name="theme-color" content="#f3ecdf">
+  <meta property="og:title" content="לה בופה · בוקר בעיר העתיקה של צפת">
+  <meta property="og:description" content="לחם חם, שולחן סלטים שופע ואור גליל — ארוחת הבוקר של The Way Inn, צפת.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wattsonworks.github.io/BUFFET/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0a0c'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-weight='800' font-size='52' fill='%23d6f54d' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
+  <meta property="og:image" content="https://wattsonworks.github.io/BUFFET/img/mezze-overhead-1280.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%23f3ecdf'/%3E%3Cpath d='M30 78V46a20 20 0 0 1 40 0v32' fill='none' stroke='%2334678a' stroke-width='6'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #0a0a0c;
-      --bg-2: #101014;
-      --ink: #f2efe9;
-      --ink-dim: rgba(242,239,233,.55);
-      --ink-faint: rgba(242,239,233,.22);
-      --line: rgba(242,239,233,.12);
-      --acid: #d6f54d;
-      --violet: #7c5cff;
-      --font-display: 'Syne', sans-serif;
-      --font-body: 'Space Grotesk', sans-serif;
-      --pad: clamp(20px, 4vw, 64px);
+      --plaster:#f3ecdf;
+      --plaster-2:#ece3d2;
+      --ink:#2b251c;
+      --soft:#6f675a;
+      --faint:#a39a8a;
+      --blue:#34678a;
+      --blue-deep:#2a5572;
+      --brass:#a98a52;
+      --line:rgba(43,37,28,.16);
+      --line-strong:rgba(43,37,28,.34);
+      --ivory:#f6f0e4;
+      --serif:"Frank Ruhl Libre",Georgia,serif;
+      --sans:"Heebo",system-ui,sans-serif;
+      --pad:clamp(1.25rem,4vw,4.5rem);
     }
-    *{ margin:0; padding:0; box-sizing:border-box; }
-    html{ scroll-behavior:auto; }
-    html.lenis, html.lenis body{ height:auto; }
-    .lenis.lenis-smooth{ scroll-behavior:auto !important; }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html.lenis,html.lenis body{height:auto}
+    .lenis.lenis-smooth{scroll-behavior:auto!important}
     body{
-      background:var(--bg);
+      background:var(--plaster);
       color:var(--ink);
-      font-family:var(--font-body);
+      font-family:var(--sans);
       font-weight:300;
-      line-height:1.5;
+      line-height:1.75;
       overflow-x:hidden;
       -webkit-font-smoothing:antialiased;
     }
-    ::selection{ background:var(--acid); color:#0a0a0c; }
-    a{ color:inherit; text-decoration:none; }
-    button{ font:inherit; color:inherit; background:none; border:none; cursor:pointer; }
-    .u-label{
-      font-size:11px; letter-spacing:.22em; text-transform:uppercase;
-      color:var(--ink-dim); font-weight:400;
+    body::after{
+      content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.055;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
     }
+    ::selection{background:var(--blue);color:var(--plaster)}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1500px;margin-inline:auto;padding-inline:var(--pad)}
+    .ltr{direction:ltr;unicode-bidi:isolate}
+    .nw{white-space:nowrap}
+    .caps{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.34em;color:var(--soft)}
+    .star{color:var(--brass)}
 
-    /* ---------- grain ---------- */
-    .grain{
-      position:fixed; inset:-50%; width:200%; height:200%;
-      pointer-events:none; z-index:120; opacity:.05;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
-      animation:grain 7s steps(8) infinite;
-    }
-    @keyframes grain{
-      0%,100%{ transform:translate(0,0) } 12%{ transform:translate(-2%,1%) }
-      25%{ transform:translate(1%,-2%) } 37%{ transform:translate(-1%,2%) }
-      50%{ transform:translate(2%,1%) } 62%{ transform:translate(-2%,-1%) }
-      75%{ transform:translate(1%,2%) } 87%{ transform:translate(-1%,-2%) }
-    }
+    .skip{position:fixed;inset-inline-start:1rem;top:-4rem;z-index:300;background:var(--ink);color:var(--plaster);padding:.6rem 1.2rem;border-radius:99px;transition:top .2s}
+    .skip:focus{top:1rem}
 
     /* ---------- preloader ---------- */
-    .preloader{
-      position:fixed; inset:0; z-index:200; background:var(--bg);
-      display:flex; align-items:center; justify-content:center;
-    }
-    .preloader__inner{ text-align:center; }
-    .preloader__name{
-      font-family:var(--font-display); font-weight:800;
-      font-size:clamp(13px,1.6vw,18px); letter-spacing:.34em; text-transform:uppercase;
-    }
-    .preloader__count{
-      font-family:var(--font-display); font-weight:800;
-      font-size:clamp(72px,16vw,200px); line-height:1; color:var(--acid);
-      font-variant-numeric:tabular-nums;
-    }
-    .preloader__bar{
-      width:min(280px,60vw); height:1px; background:var(--line);
-      margin:28px auto 0; position:relative; overflow:hidden;
-    }
-    .preloader__bar i{
-      position:absolute; inset:0; background:var(--acid);
-      transform:scaleX(0); transform-origin:left;
+    .preloader{position:fixed;inset:0;z-index:200;background:var(--plaster);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem}
+    .preloader svg{width:84px;height:auto;overflow:visible}
+    .preloader .arc{fill:none;stroke:var(--blue);stroke-width:2.5}
+    .preloader .spark{fill:var(--brass);opacity:0}
+    .pre-word{font-family:var(--serif);font-weight:500;letter-spacing:.5em;font-size:.8rem;color:var(--soft);padding-inline-start:.5em}
+
+    /* ---------- header ---------- */
+    .site-head{position:fixed;inset-inline:0;top:0;z-index:140;display:flex;align-items:center;justify-content:space-between;padding:1rem var(--pad);transition:background .4s,box-shadow .4s;color:var(--ivory)}
+    .site-head.is-solid{background:rgba(243,236,223,.92);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line);color:var(--ink)}
+    .site-head.is-menu{color:var(--ink)}
+    .brand{display:flex;align-items:center;gap:.85rem}
+    .brand svg{width:34px;height:34px;color:currentColor;opacity:.92}
+    .site-head.is-solid .brand svg{color:var(--blue)}
+    .brand .b-txt{display:flex;flex-direction:column;line-height:1.1}
+    .brand b{font-family:var(--serif);font-weight:900;font-size:1.2rem}
+    .brand .b-sub{font-size:.6rem;letter-spacing:.3em;opacity:.75}
+    .main-nav{display:flex;gap:2.2rem}
+    .main-nav a{font-size:.78rem;letter-spacing:.2em;opacity:.85;position:relative;transition:opacity .25s}
+    .main-nav a::after{content:"";position:absolute;inset-inline-start:0;bottom:-6px;width:0;height:1px;background:currentColor;transition:width .35s}
+    .main-nav a:hover{opacity:1}
+    .main-nav a:hover::after{width:100%}
+    .head-cta{font-size:.78rem;letter-spacing:.16em;border:1px solid currentColor;border-radius:99px;padding:.6rem 1.5rem;transition:background .3s,color .3s,border-color .3s}
+    .site-head:not(.is-solid):not(.is-menu) .head-cta:hover{background:var(--ivory);color:var(--ink)}
+    .site-head.is-solid .head-cta:hover,.site-head.is-menu .head-cta:hover{background:var(--blue);border-color:var(--blue);color:var(--plaster)}
+    .burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;position:relative;z-index:140;color:inherit}
+    .burger i{position:absolute;inset-inline:10px;height:1.5px;background:currentColor;transition:transform .35s,top .35s}
+    .burger i:nth-child(1){top:17px}.burger i:nth-child(2){top:26px}
+    .burger.is-open i:nth-child(1){top:21px;transform:rotate(45deg)}
+    .burger.is-open i:nth-child(2){top:21px;transform:rotate(-45deg)}
+    @media (max-width:880px){.main-nav,.head-cta{display:none}.burger{display:block}}
+
+    .m-menu{position:fixed;inset:0;z-index:130;background:var(--plaster);display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad);clip-path:inset(0 0 100% 0);transition:clip-path .65s cubic-bezier(.76,0,.24,1)}
+    .m-menu.is-open{clip-path:inset(0 0 0 0)}
+    .m-menu a{font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,7.5vw,3.2rem);line-height:1.5;border-bottom:1px solid var(--line);padding-block:.3rem;color:var(--ink)}
+    .m-menu a em{font-style:normal;color:var(--blue);font-size:.5em;vertical-align:super;margin-inline-end:.7rem}
+    .m-menu .m-foot{margin-top:1.8rem;color:var(--soft);font-size:.85rem;line-height:2.1}
+
+    /* ---------- hero (video) ---------- */
+    .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;color:var(--ivory)}
+    .hero-media{position:absolute;inset:0}
+    .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover}
+    .hero-scrim{position:absolute;inset:0;background:
+      linear-gradient(180deg,rgba(24,19,12,.42) 0%,rgba(24,19,12,.12) 38%,rgba(24,19,12,.62) 100%)}
+    .hero-inner{position:relative;z-index:2;width:100%;padding:0 var(--pad) clamp(3.4rem,8vh,6rem)}
+    .hero-eyebrow{display:flex;align-items:center;gap:.9rem;font-size:.74rem;letter-spacing:.3em;opacity:.92}
+    .hero-eyebrow::before{content:"";width:36px;height:1px;background:var(--brass)}
+    .hero-title{font-family:var(--serif);font-weight:900;line-height:1;letter-spacing:-.01em;margin-top:1.3rem}
+    .hero-title .line{display:block;overflow:hidden;padding-bottom:.07em}
+    .hero-title .line>span{display:block}
+    .hero-title .he{font-size:clamp(3.8rem,12.5vw,10.5rem)}
+    .hero-title .en{font-family:var(--serif);font-size:clamp(1.1rem,2.6vw,1.9rem);font-weight:400;letter-spacing:.42em;opacity:.85;margin-top:.7rem;text-align:right}
+    .hero-hook{max-width:33em;margin-top:1.5rem;font-size:clamp(.95rem,1.4vw,1.12rem);opacity:.94}
+    .hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.4rem;margin-top:1.6rem;font-size:.88rem}
+    .hero-meta b{font-family:var(--serif);font-weight:700;font-size:1.05rem}
+    .hero-meta .dot{opacity:.5}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;border-radius:99px;padding:.95rem 2.1rem;font-size:.9rem;letter-spacing:.04em;border:1px solid transparent;transition:transform .3s,background .3s,color .3s,border-color .3s}
+    .btn:hover{transform:translateY(-3px)}
+    .btn-ivory{background:var(--ivory);color:var(--ink);font-weight:400}
+    .btn-ivory:hover{background:var(--brass);color:var(--ivory)}
+    .btn-ghost{border-color:rgba(246,240,228,.55);color:var(--ivory)}
+    .btn-ghost:hover{border-color:var(--ivory);background:rgba(246,240,228,.12)}
+    .scroll-cue{position:absolute;z-index:2;inset-inline-end:var(--pad);bottom:clamp(3.4rem,8vh,6rem);display:flex;flex-direction:column;align-items:center;gap:.7rem;font-size:.64rem;letter-spacing:.3em;writing-mode:vertical-rl;opacity:.75}
+    .scroll-cue i{width:1px;height:52px;background:rgba(246,240,228,.4);position:relative;overflow:hidden}
+    .scroll-cue i::after{content:"";position:absolute;inset-inline:0;top:-50%;height:50%;background:var(--ivory);animation:drop 1.9s cubic-bezier(.76,0,.24,1) infinite}
+    @keyframes drop{to{top:110%}}
+    @media (max-width:880px){
+      .scroll-cue{display:none}
+      .hero-eyebrow{font-size:.6rem;letter-spacing:.14em;gap:.6rem}
+      .hero-eyebrow::before{width:20px;flex-shrink:0}
     }
 
-    /* ---------- cursor ---------- */
-    .cursor-dot,.cursor-ring{
-      position:fixed; top:0; left:0; pointer-events:none; z-index:150;
-      border-radius:50%; transform:translate(-50%,-50%);
-      display:none;
-    }
-    .cursor-dot{ width:6px; height:6px; background:var(--acid); }
-    .cursor-ring{
-      width:36px; height:36px; border:1px solid rgba(214,245,77,.5);
-      transition:width .3s ease, height .3s ease, background-color .3s ease;
-      margin-left:-15px; margin-top:-15px;
-    }
-    .cursor-ring.is-hover{ width:64px; height:64px; background:rgba(214,245,77,.08); margin-left:-29px; margin-top:-29px; }
-    @media (pointer:fine){
-      .cursor-dot,.cursor-ring{ display:block; }
+    /* ---------- section scaffolding ---------- */
+    .sec-pad{padding-block:clamp(5.5rem,13vh,10rem)}
+    .sec-head{display:flex;align-items:baseline;gap:1.4rem;margin-bottom:clamp(2.4rem,6vh,4rem)}
+    .sec-head .heb-num{font-family:var(--serif);font-weight:900;font-size:1.05rem;color:var(--plaster);background:var(--blue);width:2.2rem;height:2.2rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transform:translateY(.35rem)}
+    .sec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(2.1rem,5.4vw,4.2rem);line-height:1.1}
+    .sec-head .caps{margin-inline-start:auto}
+    @media (max-width:880px){.sec-head .caps{display:none}}
+    .lede{font-family:var(--serif);font-weight:500;font-size:clamp(1.2rem,2.2vw,1.7rem);line-height:1.8;max-width:34em}
+    .lede .blue{color:var(--blue)}
+
+    /* ---------- morning / howcards ---------- */
+    .split{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(2.5rem,6vw,6rem);align-items:start}
+    .howcards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.6rem}
+    .howcard{border:1px solid var(--line);border-radius:14px;padding:1.6rem 1.5rem;background:rgba(255,255,255,.25)}
+    .howcard .num{font-family:var(--serif);font-weight:900;font-size:1.05rem;color:var(--plaster);background:var(--brass);width:2rem;height:2rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:.9rem}
+    .howcard h3{font-family:var(--serif);font-weight:700;font-size:1.2rem;margin-bottom:.4rem}
+    .howcard p{color:var(--soft);font-size:.92rem}
+    .muted-note{margin-top:1.8rem;color:var(--faint);font-size:.86rem}
+    .muted-note a{color:var(--blue);border-bottom:1px solid currentColor}
+    .split-media{display:grid;gap:1.2rem;position:sticky;top:12vh}
+    .split-media .ph{overflow:hidden;border-radius:8px}
+    .split-media .ph:first-child{border-radius:50% 50% 0 0 / 26% 26% 0 0}
+    .split-media img{width:100%;object-fit:cover;will-change:transform}
+    .split-media .ph:first-child img{height:clamp(240px,30vh,330px)}
+    .split-media .ph:last-child img{height:clamp(280px,36vh,400px)}
+    @media (max-width:880px){
+      .split{grid-template-columns:1fr}
+      .split-media{position:static;grid-template-columns:1fr 1fr;align-items:start}
+      .howcards{grid-template-columns:1fr}
     }
 
-    /* ---------- nav ---------- */
-    .nav{
-      position:fixed; top:0; left:0; right:0; z-index:100;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:22px var(--pad);
-      mix-blend-mode:difference;
-    }
-    .nav__logo{
-      font-family:var(--font-display); font-weight:800; font-size:18px;
-      letter-spacing:.06em;
-    }
-    .nav__logo sup{ color:var(--acid); font-size:10px; }
-    .nav__links{ display:flex; gap:36px; align-items:center; }
-    .nav__links a{
-      font-size:12px; letter-spacing:.18em; text-transform:uppercase;
-      position:relative; padding:4px 0;
-    }
-    .nav__links a::after{
-      content:''; position:absolute; left:0; bottom:0; width:100%; height:1px;
-      background:currentColor; transform:scaleX(0); transform-origin:right;
-      transition:transform .4s cubic-bezier(.77,0,.18,1);
-    }
-    .nav__links a:hover::after{ transform:scaleX(1); transform-origin:left; }
-    .nav__burger{ display:none; z-index:102; width:44px; height:44px; position:relative; }
-    .nav__burger span{
-      position:absolute; left:8px; right:8px; height:2px; background:var(--ink);
-      transition:transform .4s cubic-bezier(.77,0,.18,1), top .4s, opacity .3s;
-    }
-    .nav__burger span:nth-child(1){ top:16px; }
-    .nav__burger span:nth-child(2){ top:26px; }
-    body.menu-open .nav__burger span:nth-child(1){ top:21px; transform:rotate(45deg); }
-    body.menu-open .nav__burger span:nth-child(2){ top:21px; transform:rotate(-45deg); }
-    @media (max-width:760px){
-      .nav__links{ display:none; }
-      .nav__burger{ display:block; }
+    /* ---------- categories ---------- */
+    .cats-sec{background:var(--plaster-2)}
+    .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2.2rem)}
+    .cat{background:var(--plaster);border:1px solid var(--line);border-radius:120px 120px 12px 12px;overflow:hidden;transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s}
+    .cat:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(43,37,28,.14)}
+    .cat .ph{overflow:hidden;border-radius:120px 120px 0 0}
+    .cat img{width:100%;height:clamp(200px,24vw,280px);object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+    .cat:hover img{transform:scale(1.06)}
+    .cat .tx{padding:1.4rem 1.5rem 1.7rem;text-align:center}
+    .cat h3{font-family:var(--serif);font-weight:700;font-size:clamp(1.15rem,1.8vw,1.45rem);margin-bottom:.35rem}
+    .cat p{color:var(--soft);font-size:.88rem}
+    .cats-note{text-align:center;margin-top:2.6rem;color:var(--faint);font-size:.84rem}
+    @media (max-width:1020px){.cats{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.cats{grid-template-columns:1fr}}
+
+    /* ---------- 3D city ---------- */
+    .city-sec{position:relative;height:340vh;background:linear-gradient(180deg,#f6e7ce 0%,#f0d9b9 30%,#e9cda8 60%,#f3ecdf 100%)}
+    .city-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+    #cityCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .city-fallback{position:absolute;inset:0;display:none}
+    .city-fallback img{width:100%;height:100%;object-fit:cover}
+    .city-cap{position:absolute;z-index:3;max-width:21em;opacity:0;transform:translateY(26px)}
+    .city-cap .caps{color:rgba(43,37,28,.55)}
+    .city-cap h3{font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,4.2vw,3.4rem);line-height:1.2;margin-top:.7rem}
+    .city-cap p{color:rgba(43,37,28,.72);margin-top:.7rem;font-size:.95rem}
+    .cap-a{top:clamp(6.5rem,14vh,9rem);inset-inline-start:var(--pad)}
+    .cap-b{bottom:clamp(3.5rem,9vh,6rem);inset-inline-end:var(--pad);text-align:start;background:rgba(243,236,223,.82);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:12px;padding:1.5rem 1.7rem;max-width:23em}
+    .cap-b b{font-family:var(--serif);font-weight:700;font-size:1.1rem;display:block;margin-bottom:.2rem}
+    .city-hint{position:absolute;z-index:3;bottom:1.4rem;inset-inline-start:50%;transform:translateX(50%);font-size:.62rem;letter-spacing:.3em;color:rgba(43,37,28,.5)}
+    @media (max-width:880px){.cap-a{inset-inline-end:var(--pad)}.cap-b{inset-inline-start:var(--pad)}}
+
+    /* ---------- place / setting ---------- */
+    .place-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2.5rem,6vw,6rem);align-items:center}
+    .place-text p{color:var(--soft);font-size:clamp(.97rem,1.3vw,1.08rem);max-width:31em}
+    .place-text p+p{margin-top:1.2em}
+    .place-text p a{color:var(--blue);border-bottom:1px solid currentColor}
+    .place-quote{margin:2rem 0;padding-inline-start:1.6rem;border-inline-start:2px solid var(--brass);font-family:var(--serif);font-weight:500;font-size:clamp(1.2rem,2vw,1.6rem);color:var(--ink)}
+    .btn-blue{background:var(--blue);border-color:var(--blue);color:var(--plaster);font-weight:400}
+    .btn-blue:hover{background:var(--blue-deep)}
+    .btn-line{border-color:var(--line-strong);color:var(--ink)}
+    .btn-line:hover{border-color:var(--blue);color:var(--blue)}
+    .place-media{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+    .place-media .ph{overflow:hidden;border-radius:8px}
+    .place-media .ph.arch{border-radius:50% 50% 0 0 / 30% 30% 0 0;grid-row:span 2}
+    .place-media img{width:100%;height:100%;object-fit:cover;min-height:200px;will-change:transform}
+    .place-media .ph.arch img{height:clamp(420px,52vh,560px)}
+    @media (max-width:880px){.place-grid{grid-template-columns:1fr}}
+
+    /* ---------- gallery ---------- */
+    .gal-head{display:flex;align-items:baseline;justify-content:space-between;gap:2rem;margin-bottom:3rem}
+    .gal-scroll{display:flex;gap:clamp(1.2rem,2.5vw,2.2rem);overflow-x:auto;padding:0 var(--pad) 2rem;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--brass) transparent}
+    .gal-scroll::-webkit-scrollbar{height:3px}
+    .gal-scroll::-webkit-scrollbar-thumb{background:var(--brass)}
+    .gal-item{flex-shrink:0;width:clamp(220px,24vw,340px);scroll-snap-align:center}
+    .gal-item .ph{overflow:hidden;border-radius:6px}
+    .gal-item:nth-child(odd) .ph{border-radius:50% 50% 0 0 / 36% 36% 0 0}
+    .gal-item img{width:100%;height:clamp(300px,36vw,460px);object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+    .gal-item:hover img{transform:scale(1.05)}
+    .figcap{display:flex;align-items:center;gap:.7rem;margin-top:1rem;font-size:.74rem;letter-spacing:.14em;color:var(--faint);justify-content:center}
+
+    /* ---------- reserve ---------- */
+    .reserve{text-align:center}
+    .reserve .orn{width:56px;height:56px;margin-inline:auto;color:var(--brass)}
+    .reserve h2{font-family:var(--serif);font-weight:900;font-size:clamp(3rem,10.5vw,8rem);line-height:1.05;margin-top:1.4rem}
+    .reserve h2 em{font-style:normal;color:var(--blue)}
+    .reserve .sub{color:var(--soft);max-width:34em;margin:1.5rem auto 0}
+    .cta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:980px;margin:3rem auto 0}
+    .cta-card{display:flex;flex-direction:column;align-items:center;gap:.3rem;border:1px solid var(--line);border-radius:14px;padding:1.8rem 1.4rem;background:rgba(255,255,255,.3);transition:transform .35s,box-shadow .35s,border-color .35s}
+    .cta-card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(43,37,28,.12);border-color:var(--blue)}
+    .cta-card svg{width:26px;height:26px;color:var(--blue);margin-bottom:.5rem}
+    .cta-card .lb{font-size:.72rem;letter-spacing:.24em;color:var(--faint)}
+    .cta-card .val{font-family:var(--serif);font-weight:700;font-size:1.15rem}
+    .cta-card .hint{font-size:.78rem;color:var(--faint)}
+    .reserve .links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.8rem 2.4rem;margin-top:2.8rem;font-size:.84rem;color:var(--soft)}
+    .reserve .links a{border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .25s,border-color .25s}
+    .reserve .links a:hover{color:var(--blue);border-color:var(--blue)}
+    .info-grid{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);margin-top:clamp(3.5rem,8vh,5.5rem)}
+    .info-cell{padding:clamp(1.6rem,3vw,2.6rem) clamp(1rem,2vw,2rem);border-inline-start:1px solid var(--line);text-align:start}
+    .info-cell:first-child{border-inline-start:0}
+    .info-cell h4{font-size:.7rem;letter-spacing:.3em;color:var(--blue);font-weight:500;margin-bottom:.8rem}
+    .info-cell p{font-family:var(--serif);font-weight:500;font-size:1.02rem}
+    .info-cell .sm{display:block;font-family:var(--sans);font-weight:300;color:var(--faint);font-size:.78rem;margin-top:.35rem}
+    .map-wrap{max-width:980px;margin:clamp(3rem,7vh,4.5rem) auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative}
+    .map-wrap iframe{display:block;width:100%;height:320px;border:0;filter:sepia(.18) saturate(.85)}
+    .map-link{position:absolute;bottom:.9rem;inset-inline-end:.9rem;background:var(--plaster);border:1px solid var(--line);border-radius:99px;padding:.45rem 1.1rem;font-size:.78rem}
+    .map-link:hover{color:var(--blue);border-color:var(--blue)}
+    @media (max-width:880px){
+      .cta-grid{grid-template-columns:1fr}
+      .info-grid{grid-template-columns:1fr 1fr}
+      .info-cell:nth-child(odd){border-inline-start:0}
+      .info-cell:nth-child(n+3){border-top:1px solid var(--line)}
     }
 
-    /* mobile menu overlay */
-    .menu{
-      position:fixed; inset:0; z-index:99; background:var(--bg-2);
-      display:flex; flex-direction:column; justify-content:center;
-      padding:0 var(--pad); gap:8px;
-      clip-path:inset(0 0 100% 0);
-      visibility:hidden;
-    }
-    .menu a{
-      font-family:var(--font-display); font-weight:800;
-      font-size:clamp(40px,11vw,72px); line-height:1.1; text-transform:uppercase;
-      display:flex; align-items:baseline; gap:14px;
-    }
-    .menu a em{ font-style:normal; font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--acid); }
-    .menu__foot{ position:absolute; bottom:32px; left:var(--pad); right:var(--pad);
-      display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    /* ---------- footer ---------- */
+    .site-foot{border-top:1px solid var(--line);padding:3rem 0 2.4rem;font-size:.85rem;color:var(--soft)}
+    .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem}
+    .site-foot h4{font-size:.7rem;letter-spacing:.28em;color:var(--blue);font-weight:500;margin-bottom:.8rem}
+    .site-foot .f-name{font-family:var(--serif);font-weight:900;font-size:1.3rem;color:var(--ink)}
+    .site-foot a:hover{color:var(--blue)}
+    .copyline{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between;margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);font-size:.76rem;color:var(--faint)}
+    @media (max-width:880px){.foot-grid{grid-template-columns:1fr 1fr}}
 
-    /* ---------- hero ---------- */
-    .hero{
-      position:relative; min-height:100svh; display:flex; flex-direction:column;
-      justify-content:flex-end; padding:0 var(--pad) 5svh; overflow:hidden;
-    }
-    .hero__canvas{ position:absolute; inset:0; z-index:0; }
-    .hero__canvas canvas{ display:block; width:100%; height:100%; }
-    .hero__veil{
-      position:absolute; inset:0; z-index:1; pointer-events:none;
-      background:radial-gradient(120% 90% at 50% 110%, rgba(10,10,12,0) 30%, rgba(10,10,12,.7) 100%);
-    }
-    .hero__content{ position:relative; z-index:2; }
-    .hero__eyebrow{
-      display:flex; gap:18px; align-items:center; margin-bottom:3vh;
-    }
-    .hero__eyebrow .dot{
-      width:8px; height:8px; border-radius:50%; background:var(--acid);
-      box-shadow:0 0 12px var(--acid); animation:pulse 2.4s ease-in-out infinite;
-    }
-    @keyframes pulse{ 50%{ opacity:.35 } }
-    .hero__title{
-      font-family:var(--font-display); font-weight:800; text-transform:uppercase;
-      font-size:clamp(44px,14.5vw,230px); line-height:.92; letter-spacing:-.01em;
-    }
-    .hero__title .line{ display:block; overflow:hidden; }
-    .hero__title .line > span{ display:inline-block; will-change:transform; }
-    .hero__title .alt{
-      -webkit-text-stroke:1.5px var(--ink); color:transparent;
-    }
-    .hero__title .reg{ font-size:.32em; vertical-align:top; line-height:1; padding-top:.18em; }
-    .hero__meta{
-      display:flex; justify-content:space-between; align-items:flex-end;
-      margin-top:4vh; gap:24px; flex-wrap:wrap;
-    }
-    .hero__role{ max-width:340px; font-size:15px; color:var(--ink-dim); }
-    .hero__role strong{ color:var(--ink); font-weight:400; }
-    .hero__scroll{
-      display:flex; align-items:center; gap:12px; font-size:11px;
-      letter-spacing:.22em; text-transform:uppercase; color:var(--ink-dim);
-    }
-    .hero__scroll i{
-      display:block; width:1px; height:44px; background:var(--ink-faint);
-      position:relative; overflow:hidden;
-    }
-    .hero__scroll i::after{
-      content:''; position:absolute; left:0; top:-50%; width:100%; height:50%;
-      background:var(--acid); animation:scrolldrop 1.8s cubic-bezier(.77,0,.18,1) infinite;
-    }
-    @keyframes scrolldrop{ to{ top:110% } }
-
-    /* ---------- marquee ---------- */
-    .marquee{
-      border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-      overflow:hidden; padding:18px 0; background:var(--bg);
-      position:relative; z-index:3;
-    }
-    .marquee__track{ display:flex; width:max-content; animation:marquee 28s linear infinite; }
-    .marquee span{
-      font-family:var(--font-display); font-weight:700; text-transform:uppercase;
-      font-size:clamp(18px,2.6vw,30px); white-space:nowrap; padding-right:18px;
-    }
-    .marquee span b{ color:var(--acid); font-weight:700; padding-right:18px; }
-    @keyframes marquee{ to{ transform:translateX(-50%) } }
-
-    /* ---------- sections ---------- */
-    section{ position:relative; }
-    .sect-head{
-      display:flex; align-items:baseline; gap:18px;
-      padding:0 var(--pad); margin-bottom:clamp(36px,6vh,72px);
-    }
-    .sect-head .idx{ color:var(--acid); font-size:13px; letter-spacing:.1em; }
-
-    /* manifesto */
-    .manifesto{ padding:clamp(100px,18vh,220px) 0 0; }
-    .manifesto__text{
-      padding:0 var(--pad); max-width:1100px;
-      font-family:var(--font-display); font-weight:700;
-      font-size:clamp(26px,4.6vw,64px); line-height:1.18; letter-spacing:-.01em;
-    }
-    .manifesto__text .w{ display:inline-block; opacity:.12; will-change:opacity; }
-    .manifesto__text .hl{ color:var(--acid); }
-    .manifesto__stats{
-      display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
-      background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-      margin-top:clamp(60px,10vh,120px);
-    }
-    .manifesto__stats > div{ background:var(--bg); padding:clamp(24px,3vw,44px) var(--pad); }
-    .manifesto__stats b{
-      display:block; font-family:var(--font-display); font-weight:800;
-      font-size:clamp(34px,5vw,72px); line-height:1; color:var(--ink);
-    }
-    .manifesto__stats b i{ color:var(--acid); font-style:normal; }
-    .manifesto__stats small{ display:block; margin-top:10px; }
-    @media (max-width:600px){
-      .manifesto__stats{ grid-template-columns:1fr; }
-    }
-
-    /* ---------- work ---------- */
-    .work{ padding:clamp(80px,14vh,180px) 0 0; }
-    .work__list{ display:flex; flex-direction:column; gap:6vh; padding:0 var(--pad); }
-    .card{
-      position:sticky; top:9vh;
-      background:var(--bg-2); border:1px solid var(--line); border-radius:20px;
-      overflow:hidden; display:grid; grid-template-columns:1fr 1.2fr;
-      min-height:74vh;
-    }
-    .card__shade{
-      position:absolute; inset:0; background:#0a0a0c; opacity:0;
-      pointer-events:none; z-index:5; border-radius:inherit;
-    }
-    .card__info{
-      padding:clamp(24px,3.4vw,56px); display:flex; flex-direction:column;
-      justify-content:flex-start; gap:clamp(24px,4vh,48px);
-    }
-    .card__top{ display:flex; justify-content:space-between; align-items:baseline; }
-    .card__num{ font-family:var(--font-display); font-weight:800; font-size:15px; color:var(--acid); }
-    .card__title{
-      font-family:var(--font-display); font-weight:800; text-transform:uppercase;
-      font-size:clamp(40px,5.8vw,92px); line-height:.95; letter-spacing:-.01em;
-    }
-    .card__desc{ color:var(--ink-dim); max-width:380px; font-size:15px; margin-top:14px; }
-    .card__tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
-    .card__tags span{
-      font-size:11px; letter-spacing:.14em; text-transform:uppercase;
-      border:1px solid var(--line); border-radius:99px; padding:7px 14px; color:var(--ink-dim);
-    }
-    .card__visual{
-      position:relative; overflow:hidden; min-height:320px;
-      display:flex; align-items:center; justify-content:center;
-    }
-    .card__bg{ position:absolute; inset:-12%; }
-    .card--aura  .card__bg{ background:radial-gradient(80% 90% at 70% 20%, #7c5cff 0%, #2d1d7a 45%, #0c0a18 100%); }
-    .card--tide  .card__bg{ background:radial-gradient(80% 90% at 30% 30%, #19c6d4 0%, #0c4f6e 50%, #060d14 100%); }
-    .card--pulse .card__bg{ background:radial-gradient(80% 90% at 70% 70%, #ff5c47 0%, #7a1d33 50%, #140608 100%); }
-    .card--nova  .card__bg{ background:radial-gradient(80% 90% at 35% 25%, #d6f54d 0%, #3c5210 48%, #0a0d04 100%); }
-    .card__ghost{
-      position:absolute; font-family:var(--font-display); font-weight:800;
-      font-size:clamp(160px,26vw,420px); line-height:1; color:rgba(255,255,255,.06);
-      user-select:none; pointer-events:none;
-    }
-    .card__screen{
-      position:relative; width:min(62%,330px); aspect-ratio:9/16.5; max-height:78%;
-      background:rgba(10,10,14,.82); border:1px solid rgba(255,255,255,.16);
-      border-radius:26px;
-      padding:18px; display:flex; flex-direction:column; gap:12px;
-      box-shadow:0 24px 48px rgba(0,0,0,.4);
-    }
-    .card__screen .pill{ height:10px; border-radius:6px; background:rgba(255,255,255,.14); }
-    .card__screen .pill.s{ width:42%; } .card__screen .pill.m{ width:68%; }
-    .card__screen .block{
-      flex:1; border-radius:14px;
-      background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.04));
-      position:relative; overflow:hidden;
-    }
-    .card__screen .block::after{
-      content:''; position:absolute; width:58%; height:58%; border-radius:50%;
-      right:-16%; bottom:-16%; background:rgba(214,245,77,.25); filter:blur(8px);
-    }
-    .card__screen .row{ display:flex; gap:10px; }
-    .card__screen .chip{ flex:1; height:42px; border-radius:11px; background:rgba(255,255,255,.1); }
-    .card__screen .chip.go{ background:var(--acid); }
-    @media (max-width:900px){
-      .card{ grid-template-columns:1fr; min-height:auto; top:11vh; }
-      .card__visual{ order:-1; min-height:300px; }
-      .card__screen{ width:min(56%,250px); margin:34px 0; }
-      .card__desc{ max-width:none; }
-    }
-
-    /* ---------- capabilities ---------- */
-    .caps{ padding:clamp(110px,18vh,220px) 0 0; }
-    .caps__list{ border-top:1px solid var(--line); }
-    .cap{
-      display:grid; grid-template-columns:80px 1fr auto; align-items:center; gap:24px;
-      padding:clamp(26px,4vh,44px) var(--pad);
-      border-bottom:1px solid var(--line); position:relative; overflow:hidden;
-    }
-    .cap::before{
-      content:''; position:absolute; inset:0; background:var(--acid);
-      transform:scaleY(0); transform-origin:bottom;
-      transition:transform .45s cubic-bezier(.77,0,.18,1);
-    }
-    .cap:hover::before{ transform:scaleY(1); transform-origin:top; }
-    .cap > *{ position:relative; transition:color .35s; }
-    .cap:hover > *{ color:#0a0a0c; }
-    .cap__num{ font-size:13px; color:var(--ink-dim); letter-spacing:.1em; }
-    .cap__name{
-      font-family:var(--font-display); font-weight:800; text-transform:uppercase;
-      font-size:clamp(26px,4.4vw,58px); line-height:1.05;
-    }
-    .cap__note{ font-size:13px; color:var(--ink-dim); max-width:220px; text-align:right; }
-    @media (max-width:760px){
-      .cap{ grid-template-columns:48px 1fr; }
-      .cap__note{ display:none; }
-    }
-
-    /* ---------- recognition ---------- */
-    .awards{ padding:clamp(90px,14vh,180px) var(--pad) 0; }
-    .awards .sect-head{ padding:0; }
-    .awards__grid{
-      display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
-      border:1px solid var(--line);
-    }
-    .awards__grid > div{
-      background:var(--bg); padding:clamp(22px,3vw,40px);
-      display:flex; flex-direction:column; gap:14px; min-height:140px; justify-content:space-between;
-    }
-    .awards__grid b{ font-family:var(--font-display); font-weight:700; font-size:clamp(16px,1.6vw,21px); }
-    .awards__grid span{ color:var(--acid); font-size:13px; }
-    @media (max-width:760px){ .awards__grid{ grid-template-columns:1fr 1fr; } }
-
-    /* ---------- contact ---------- */
-    .contact{
-      padding:clamp(110px,20vh,240px) var(--pad) 0; text-align:center; overflow:hidden;
-    }
-    .contact > .u-label{ display:block; margin-bottom:4vh; }
-    .contact__big{
-      display:inline-block; font-family:var(--font-display); font-weight:800;
-      text-transform:uppercase; line-height:.95; letter-spacing:-.01em;
-      font-size:clamp(44px,9.6vw,150px);
-      -webkit-text-stroke:1.5px var(--ink); color:transparent;
-      transition:color .5s cubic-bezier(.77,0,.18,1), -webkit-text-stroke-color .5s;
-    }
-    .contact__big:hover{ color:var(--acid); -webkit-text-stroke-color:var(--acid); }
-    .contact__mail{
-      display:inline-block; margin-top:5vh; font-size:clamp(16px,2.2vw,24px);
-      border-bottom:1px solid var(--ink-faint); padding-bottom:6px;
-    }
-    .footer{
-      margin-top:clamp(90px,14vh,160px); border-top:1px solid var(--line);
-      padding:26px var(--pad) max(26px, env(safe-area-inset-bottom));
-      display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
-      font-size:12px; color:var(--ink-dim); letter-spacing:.06em;
-    }
-    .footer__socials{ display:flex; gap:22px; }
-    .footer__socials a:hover{ color:var(--acid); }
-    .footer .note{ font-size:11px; color:var(--ink-faint); }
-
-    @media (prefers-reduced-motion:reduce){
-      .grain, .marquee__track, .hero__scroll i::after, .hero__eyebrow .dot{ animation:none !important; }
-    }
+    [data-reveal]{opacity:0;transform:translateY(34px)}
+    .no-motion [data-reveal]{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){.scroll-cue i::after{animation:none}}
   </style>
 </head>
 <body>
+  <a class="skip" href="#morning">דלג לתוכן</a>
 
-  <!-- preloader -->
-  <div class="preloader" id="preloader">
-    <div class="preloader__inner">
-      <div class="preloader__name">Elia Voss — Portfolio ©2026</div>
-      <div class="preloader__count"><span id="count">0</span></div>
-      <div class="preloader__bar"><i id="bar"></i></div>
-    </div>
+  <div class="preloader" data-preloader>
+    <svg viewBox="0 0 120 160" aria-hidden="true">
+      <path class="arc" data-arc d="M22 150 V64 a38 38 0 0 1 76 0 V150"/>
+      <path class="spark" data-spark d="M60 18 l3.5 9 9 3.5 -9 3.5 -3.5 9 -3.5 -9 -9 -3.5 9 -3.5z"/>
+    </svg>
+    <div class="pre-word">לה בופה</div>
   </div>
 
-  <div class="grain" aria-hidden="true"></div>
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
-
-  <!-- nav -->
-  <header class="nav">
-    <a class="nav__logo" href="#top" data-scroll>VOSS<sup>®</sup></a>
-    <nav class="nav__links">
-      <a href="#work" data-scroll data-hover>Work</a>
-      <a href="#about" data-scroll data-hover>About</a>
-      <a href="#capabilities" data-scroll data-hover>Capabilities</a>
-      <a href="#contact" data-scroll data-hover>Let's talk</a>
+  <header class="site-head" data-head>
+    <a class="brand" href="#top" aria-label="לה בופה — לראש העמוד">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M10 42 V22 a14 14 0 0 1 28 0 V42"/>
+        <path d="M5 42 h38" stroke-linecap="round"/>
+      </svg>
+      <span class="b-txt"><b>לה בופה</b><span class="b-sub ltr">LA BUFFET · SAFED</span></span>
+    </a>
+    <nav class="main-nav" aria-label="ניווט ראשי">
+      <a href="#morning">הבוקר</a>
+      <a href="#table">השולחן</a>
+      <a href="#city">העיר</a>
+      <a href="#place">המקום</a>
+      <a href="#gallery">גלריה</a>
     </nav>
-    <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
+    <a class="head-cta" href="#reserve">להזמין שולחן</a>
+    <button class="burger" data-burger aria-label="תפריט" aria-expanded="false"><i></i><i></i></button>
   </header>
 
-  <!-- mobile menu -->
-  <div class="menu" id="menu" aria-hidden="true">
-    <a href="#work" data-scroll>Work <em>(04)</em></a>
-    <a href="#about" data-scroll>About</a>
-    <a href="#capabilities" data-scroll>Capabilities</a>
-    <a href="#contact" data-scroll>Contact</a>
-    <div class="menu__foot">
-      <span class="u-label">Tel Aviv — <span data-clock>00:00</span></span>
-      <span class="u-label">hello@eliavoss.studio</span>
-    </div>
+  <div class="m-menu" data-menu>
+    <a href="#morning"><em>א</em>הבוקר</a>
+    <a href="#table"><em>ב</em>השולחן</a>
+    <a href="#city"><em>ג</em>העיר</a>
+    <a href="#place"><em>ד</em>המקום</a>
+    <a href="#gallery"><em>ה</em>גלריה</a>
+    <a href="#reserve"><em>ו</em>להזמין</a>
+    <p class="m-foot"><span class="ltr">08:00–10:30</span> · מדי בוקר<br>סמטת י״ז 23, רובע האמנים, צפת</p>
   </div>
 
   <main id="top">
-    <!-- hero -->
-    <section class="hero" id="hero">
-      <div class="hero__canvas"><canvas id="webgl"></canvas></div>
-      <div class="hero__veil"></div>
-      <div class="hero__content">
-        <div class="hero__eyebrow">
-          <span class="dot"></span>
-          <span class="u-label">Available for select projects — 2026</span>
-        </div>
-        <h1 class="hero__title" id="heroTitle">
-          <span class="line"><span>Elia</span></span>
-          <span class="line"><span class="alt">Voss®</span></span>
+
+    <!-- ============ HERO — VIDEO ============ -->
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <video data-hero-video poster="img/hero-loop-poster.jpg" muted playsinline loop autoplay preload="metadata">
+          <source src="img/hero-loop.webm" type="video/webm">
+          <source src="img/hero-loop.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <p class="hero-eyebrow" data-hero-fade>ארוחת הבוקר של <span class="ltr nw">The Way Inn</span> · העיר העתיקה, צפת</p>
+        <h1 class="hero-title">
+          <span class="line he"><span data-hero-line>לה בופה</span></span>
+          <span class="line en ltr"><span data-hero-line>LA BUFFET</span></span>
         </h1>
-        <div class="hero__meta">
-          <p class="hero__role"><strong>UX/UI designer & creative developer</strong> building digital products, brands and interactive experiences that feel inevitable.</p>
-          <div class="hero__scroll"><span>Scroll to explore</span><i></i></div>
+        <p class="hero-hook" data-hero-fade>לחם חם שיצא מהתנור, שולחן סלטים ים-תיכוני שופע, אור גליל דרך חלון קמרון — מדי בוקר, בבית אבן בן 250 שנה ברובע האמנים.</p>
+        <div class="hero-meta" data-hero-fade>
+          <b class="ltr">08:00 – 10:30</b><span>מדי בוקר</span>
+          <span class="dot">·</span>
+          <span>לאורחי המלון</span>
+        </div>
+        <div class="hero-cta" data-hero-fade>
+          <a class="btn btn-ivory" href="#reserve">להזמין דרך הקבלה</a>
+          <a class="btn btn-ghost" href="https://wa.me/972526881116?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A0%D7%A8%D7%A6%D7%94%20%D7%9C%D7%94%D7%96%D7%9E%D7%99%D7%9F%20%D7%90%D7%A8%D7%95%D7%97%D7%AA%20%D7%91%D7%95%D7%A7%D7%A8%20%D7%91%D7%9C%D7%94%20%D7%91%D7%95%D7%A4%D7%94%20%D7%9C%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%5B___%5D%20%D7%A2%D7%91%D7%95%D7%A8%20%5B___%5D%20%D7%A1%D7%95%D7%A2%D7%93%D7%99%D7%9D.%20%D7%AA%D7%95%D7%93%D7%94%21" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
+      <div class="scroll-cue">לגלול<i></i></div>
     </section>
 
-    <!-- marquee -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Interfaces <b>·</b> Motion <b>·</b> Design Systems <b>·</b> WebGL <b>·</b> Prototyping <b>·</b> Art Direction <b>·</b> </span>
-        <span>Interfaces <b>·</b> Motion <b>·</b> Design Systems <b>·</b> WebGL <b>·</b> Prototyping <b>·</b> Art Direction <b>·</b> </span>
-      </div>
-    </div>
+    <!-- ============ MORNING ============ -->
+    <section class="sec-pad" id="morning">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <span class="heb-num">א</span>
+          <h2>בוקר שמתחיל בלחם חם, ומסתיים בקפה בחצר.</h2>
+          <span class="caps">EVERY MORNING</span>
+        </div>
+        <div class="split">
+          <div>
+            <p class="lede" data-reveal>לה בופה היא ארוחת הבוקר של <span class="ltr nw">The Way Inn</span> — שולחן פתוח, נדיב וביתי, שמוגש לאורחי המלון בחדר האבן הגדול ובחצר הסלולה. <span class="blue">לחמים שנאפו אצלנו באותו בוקר,</span> סלטים ים-תיכוניים, ממרחים, גבינות מקומיות, ביצים, פירות העונה — וקפה בנחת.</p>
 
-    <!-- manifesto -->
-    <section class="manifesto" id="about">
-      <div class="sect-head"><span class="idx">(01)</span><span class="u-label">Manifesto</span></div>
-      <p class="manifesto__text" id="manifesto">
-        I believe great design is invisible until it moves you. For eight years I've helped startups and studios turn <span class="hl">complex problems</span> into interfaces people <span class="hl">love to touch</span> — pixel by pixel, frame by frame.
-      </p>
-      <div class="manifesto__stats">
-        <div><b data-counter="8">0</b><small class="u-label">Years of practice</small></div>
-        <div><b><span data-counter="40">0</span><i>+</i></b><small class="u-label">Products shipped</small></div>
-        <div><b data-counter="12">0</b><small class="u-label">Industry awards</small></div>
-      </div>
-    </section>
-
-    <!-- work -->
-    <section class="work" id="work">
-      <div class="sect-head"><span class="idx">(02)</span><span class="u-label">Selected work — 2022→2026</span></div>
-      <div class="work__list" id="workList">
-
-        <article class="card card--aura">
-          <div class="card__info">
-            <div class="card__top"><span class="card__num">01</span><span class="u-label">2026</span></div>
-            <div>
-              <h3 class="card__title">Aura</h3>
-              <p class="card__desc">A calm-by-design fintech app. Rebuilt the onboarding journey and design system; activation up 38%.</p>
-              <div class="card__tags"><span>Product design</span><span>Design system</span><span>iOS</span></div>
+            <div class="howcards">
+              <div class="howcard" data-reveal>
+                <span class="num">1</span>
+                <h3>להזמין מראש</h3>
+                <p>פונים לקבלה של <span class="ltr nw">The Way Inn</span> <strong>לפחות יום מראש</strong>, מסכמים תאריך ומספר סועדים, ובבוקר השולחן מחכה לכם.</p>
+              </div>
+              <div class="howcard" data-reveal>
+                <span class="num">2</span>
+                <h3>או להצטרף לבופה החי</h3>
+                <p>בבקרים שהבופה פתוח לכל אורחי המלון — פשוט מתיישבים. <em>(שאלו בקבלה אילו ימים פתוחים השבוע.)</em></p>
+              </div>
             </div>
+            <p class="muted-note" data-reveal>השעות: <strong class="ltr">08:00–10:30</strong> · הימים המדויקים, מחיר לסועד וכשרות — <a href="#reserve">לבירור בקבלה</a>.</p>
           </div>
-          <div class="card__visual">
-            <div class="card__bg"></div>
-            <span class="card__ghost">A</span>
-            <div class="card__screen"><span class="pill m"></span><span class="pill s"></span><div class="block"></div><div class="row"><span class="chip"></span><span class="chip go"></span></div></div>
+          <div class="split-media" data-reveal>
+            <div class="ph" data-clip><img src="img/bread-salad-juice-525.webp" alt="לחם חם, סלט ים-תיכוני וכוס מיץ תפוזים על שולחן הבוקר" loading="lazy" data-plx></div>
+            <div class="ph" data-clip><img src="img/homemade-bread-800.webp" alt="לחמים ביתיים על מגש נייר אפייה, יצאו מהתנור" loading="lazy" data-plx></div>
           </div>
-          <div class="card__shade"></div>
-        </article>
-
-        <article class="card card--tide">
-          <div class="card__info">
-            <div class="card__top"><span class="card__num">02</span><span class="u-label">2025</span></div>
-            <div>
-              <h3 class="card__title">Tide</h3>
-              <p class="card__desc">Editorial travel platform with story-driven booking. WebGL transitions between destinations, zero loading screens.</p>
-              <div class="card__tags"><span>UX/UI</span><span>WebGL</span><span>Art direction</span></div>
-            </div>
-          </div>
-          <div class="card__visual">
-            <div class="card__bg"></div>
-            <span class="card__ghost">T</span>
-            <div class="card__screen"><span class="pill s"></span><span class="pill m"></span><div class="block"></div><div class="row"><span class="chip go"></span><span class="chip"></span></div></div>
-          </div>
-          <div class="card__shade"></div>
-        </article>
-
-        <article class="card card--pulse">
-          <div class="card__info">
-            <div class="card__top"><span class="card__num">03</span><span class="u-label">2024</span></div>
-            <div>
-              <h3 class="card__title">Pulse</h3>
-              <p class="card__desc">Wearable health OS — glanceable vitals, haptic-first interactions, motion language for 40+ micro-states.</p>
-              <div class="card__tags"><span>Interaction</span><span>Motion</span><span>watchOS</span></div>
-            </div>
-          </div>
-          <div class="card__visual">
-            <div class="card__bg"></div>
-            <span class="card__ghost">P</span>
-            <div class="card__screen"><span class="pill m"></span><span class="pill s"></span><div class="block"></div><div class="row"><span class="chip"></span><span class="chip go"></span></div></div>
-          </div>
-          <div class="card__shade"></div>
-        </article>
-
-        <article class="card card--nova">
-          <div class="card__info">
-            <div class="card__top"><span class="card__num">04</span><span class="u-label">2023</span></div>
-            <div>
-              <h3 class="card__title">Nova</h3>
-              <p class="card__desc">Collaborative design tool for motion designers. Node-based timeline, realtime multiplayer, loved by 30k creators.</p>
-              <div class="card__tags"><span>Product design</span><span>Web app</span><span>Branding</span></div>
-            </div>
-          </div>
-          <div class="card__visual">
-            <div class="card__bg"></div>
-            <span class="card__ghost">N</span>
-            <div class="card__screen"><span class="pill s"></span><span class="pill m"></span><div class="block"></div><div class="row"><span class="chip go"></span><span class="chip"></span></div></div>
-          </div>
-          <div class="card__shade"></div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- capabilities -->
-    <section class="caps" id="capabilities">
-      <div class="sect-head"><span class="idx">(03)</span><span class="u-label">Capabilities</span></div>
-      <div class="caps__list">
-        <div class="cap" data-hover>
-          <span class="cap__num">01</span>
-          <h3 class="cap__name">Product Design</h3>
-          <p class="cap__note">Research, flows, UI — from first sketch to shipped feature.</p>
-        </div>
-        <div class="cap" data-hover>
-          <span class="cap__num">02</span>
-          <h3 class="cap__name">Design Systems</h3>
-          <p class="cap__note">Tokens, components and docs that scale with your team.</p>
-        </div>
-        <div class="cap" data-hover>
-          <span class="cap__num">03</span>
-          <h3 class="cap__name">Motion & Interaction</h3>
-          <p class="cap__note">Micro-interactions and motion language that guide, not decorate.</p>
-        </div>
-        <div class="cap" data-hover>
-          <span class="cap__num">04</span>
-          <h3 class="cap__name">Creative Development</h3>
-          <p class="cap__note">GSAP, Three.js and shaders — design that ships as code.</p>
         </div>
       </div>
     </section>
 
-    <!-- recognition -->
-    <section class="awards">
-      <div class="sect-head"><span class="idx">(04)</span><span class="u-label">Recognition</span></div>
-      <div class="awards__grid">
-        <div><b>Awwwards</b><span>Site of the Day ×3</span></div>
-        <div><b>FWA</b><span>FWA of the Day ×2</span></div>
-        <div><b>CSS Design Awards</b><span>Website of the Year nominee</span></div>
-        <div><b>The Webby Awards</b><span>Honoree — Best UX</span></div>
+    <!-- ============ TABLE / CATEGORIES ============ -->
+    <section class="sec-pad cats-sec" id="table">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <span class="heb-num">ב</span>
+          <h2>קטגוריות — לא רשימת קניות, חגיגה.</h2>
+          <span class="caps">ON THE TABLE</span>
+        </div>
+        <p class="lede" data-reveal style="margin-bottom:3rem">כל בוקר השולחן מתחלף בקצב של מה שגדל ונאפה היום. הנה למה אפשר לצפות. <em>(המנות והשמות המדויקים — לאישור עם המלון.)</em></p>
+
+        <div class="cats">
+          <figure class="cat" data-reveal>
+            <div class="ph"><img src="img/homemade-bread-800.webp" alt="לחמים ביתיים" loading="lazy"></div>
+            <figcaption class="tx"><h3>לחמים שנאפו בבית</h3><p>חלות קטנות, לחם זיתים, פוקצ׳ה עם זעתר — חמים מהתנור.</p></figcaption>
+          </figure>
+          <figure class="cat" data-reveal>
+            <div class="ph"><img src="img/mezze-overhead-800.webp" alt="שולחן סלטים מבט-על" loading="lazy"></div>
+            <figcaption class="tx"><h3>סלטים וממרחים</h3><p>סלט ישראלי, סלק, מטבוחה, חציל, חומוס, טחינה — הכול מוכן אצלנו.</p></figcaption>
+          </figure>
+          <figure class="cat" data-reveal>
+            <div class="ph"><img src="img/buffet-spread-800.webp" alt="גבינות, לבנה, חמוצים, ריבות" loading="lazy"></div>
+            <figcaption class="tx"><h3>גבינות, לבנה וחמוצים</h3><p>פטה, גבינות גליליות, לבנה קטיפתית, זיתים, ריבות בית.</p></figcaption>
+          </figure>
+          <figure class="cat" data-reveal>
+            <div class="ph"><img src="img/table-for-four-800.webp" alt="שולחן בוקר עם שקשוקה" loading="lazy"></div>
+            <figcaption class="tx"><h3>ביצים ומנות חמות</h3><p>שקשוקה, ביצים לבחירה, מנה חמה של היום.</p></figcaption>
+          </figure>
+          <figure class="cat" data-reveal>
+            <div class="ph"><img src="img/eggplant-tahini-800.webp" alt="חציל בטחינה עם כוסברה ופפריקה" loading="lazy"></div>
+            <figcaption class="tx"><h3>מנות שף קטנות</h3><p>חציל מעושן בטחינה, ירקות צלויים — נגיעות מהמטבח של <span class="ltr nw">The Way Inn</span>.</p></figcaption>
+          </figure>
+          <figure class="cat" data-reveal>
+            <div class="ph"><img src="img/specialty-loaf-800.webp" alt="עוגת בוקר עם אגוזים ושוקולד" loading="lazy"></div>
+            <figcaption class="tx"><h3>פירות, מאפים וקפה</h3><p>פירות עונה, מאפי בוקר, קפה איטלקי ושלל תה.</p></figcaption>
+          </figure>
+        </div>
+        <p class="cats-note" data-reveal>חלבי · צמחוני <span class="star">✦</span> כשרות ומחיר — לבירור בקבלה</p>
       </div>
     </section>
 
-    <!-- contact -->
-    <section class="contact" id="contact">
-      <span class="u-label">Have an idea worth building?</span>
-      <a class="contact__big" href="mailto:hello@eliavoss.studio" data-hover>Let's Talk</a>
-      <br>
-      <a class="contact__mail" href="mailto:hello@eliavoss.studio" data-hover>hello@eliavoss.studio</a>
-      <footer class="footer">
-        <span>© 2026 Elia Voss — Tel Aviv, <span data-clock>00:00</span> local</span>
-        <div class="footer__socials">
-          <a href="#" data-hover>Dribbble</a><a href="#" data-hover>X</a><a href="#" data-hover>LinkedIn</a><a href="#" data-hover>Read.cv</a>
+    <!-- ============ 3D OLD CITY ============ -->
+    <section class="city-sec" id="city">
+      <div class="city-stage">
+        <canvas id="cityCanvas" aria-hidden="true"></canvas>
+        <div class="city-fallback" data-city-fallback>
+          <img src="img/dining-wide-800.webp" alt="" loading="lazy">
         </div>
-        <span class="note">Fictional portfolio concept — built with GSAP, Lenis & Three.js</span>
-      </footer>
+        <div class="city-cap cap-a" data-cap-a>
+          <p class="caps">ג <span class="star">✦</span> העיר</p>
+          <h3>בין סמטאות האבן של צפת.</h3>
+          <p>גללו — והעיר העתיקה תוביל אתכם, סמטה אחר סמטה, אל שער כחול אחד.</p>
+        </div>
+        <div class="city-cap cap-b" data-cap-b>
+          <b>הגעתם.</b>
+          סמטת י״ז 23, רובע האמנים — בית האבן של <span class="ltr nw">The Way Inn</span>. בבוקר, הריח של הלחם כבר ימצא אתכם.
+        </div>
+        <p class="city-hint" data-city-hint>( המשיכו לגלול )</p>
+      </div>
+    </section>
+
+    <!-- ============ PLACE ============ -->
+    <section class="sec-pad" id="place">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <span class="heb-num">ד</span>
+          <h2>בית אבן בן 250 שנה, בלב רובע האמנים.</h2>
+          <span class="caps">THE WAY INN</span>
+        </div>
+        <div class="place-grid">
+          <div class="place-text">
+            <p data-reveal>לה בופה היא ארוחת הבוקר של <a href="https://thewayinn.co.il/" target="_blank" rel="noopener">The Way Inn</a> — מלון בוטיק קטן בבית אבן עתיק, שיסדו השף רוני בראל ואשתו ג׳נין. כעשר סוויטות סביב חצרות פתוחות, מרפסות גג לשקיעה, ספא חמאם טורקי, ורוח הצפת הישנה בכל מקום.</p>
+            <p data-reveal>בבוקר, חדר האבן הגדול מתמלא באור גליל ובארומה של לחם חם. מפיות המלון רקומות במנדלת עץ-החיים — אותה מנדלה הקבועה בקיר החצר. זה לא חדר אוכל של מלון. זה הבית של בראל, נדיב כשמתארחים אצלו.</p>
+            <blockquote class="place-quote" data-reveal>״לא לבקר בצפת — לגור בה.״</blockquote>
+            <a class="btn btn-blue" href="https://thewayinn.co.il/" target="_blank" rel="noopener" data-reveal>להזמין חדר ב-The Way Inn ↗</a>
+          </div>
+          <div class="place-media" data-reveal>
+            <div class="ph arch" data-clip><img src="img/courtyard-treeoflife-494.webp" alt="חצר The Way Inn בלילה עם לוח מנדלת עץ-החיים על קיר האבן" loading="lazy" data-plx></div>
+            <div class="ph" data-clip><img src="img/dining-chairs-536.webp" alt="חדר אוכל עם כיסאות צבעוניים ורצפת בלטות מודפסת" loading="lazy"></div>
+            <div class="ph" data-clip><img src="img/courtyard-flowers-800.webp" alt="שערי ברזל כחולים עם פרחים בחצר" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="sec-pad" id="gallery" style="padding-inline:0;background:var(--plaster-2)">
+      <div class="wrap gal-head">
+        <div class="sec-head" style="margin-bottom:0" data-reveal>
+          <span class="heb-num">ה</span>
+          <h2>מבט אל הבוקר</h2>
+        </div>
+        <span class="caps" data-reveal>( גללו הצידה )</span>
+      </div>
+      <div class="gal-scroll">
+        <figure class="gal-item"><div class="ph"><img src="img/mezze-overhead-800.webp" alt="שולחן סלטים — מבט על" loading="lazy"></div><figcaption class="figcap">שולחן סלטים — מבט על</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/homemade-bread-800.webp" alt="לחמים ביתיים" loading="lazy"></div><figcaption class="figcap">לחמים ביתיים, מהתנור</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/dining-buffet-tall-800.webp" alt="חדר אוכל אבן עם שולחן בופה" loading="lazy"></div><figcaption class="figcap">החדר והחלון הכחול</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/bread-cut-800.webp" alt="לחם פרוס" loading="lazy"></div><figcaption class="figcap">לחם פרוס, פנים אווריריים</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/table-for-four-800.webp" alt="שולחן בוקר לארבעה" loading="lazy"></div><figcaption class="figcap">שולחן לארבעה</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/buffet-spread-800.webp" alt="גבינות, חמוצים וריבות" loading="lazy"></div><figcaption class="figcap">גבינות, חמוצים וריבות</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/eggplant-tahini-800.webp" alt="חציל בטחינה" loading="lazy"></div><figcaption class="figcap">חציל מעושן בטחינה</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/dining-windows-800.webp" alt="חלונות קמרון בחדר האוכל" loading="lazy"></div><figcaption class="figcap">חלונות קמרון אל ההרים</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/salatim-closeup-800.webp" alt="סלטים — קלוז-אפ" loading="lazy"></div><figcaption class="figcap">סלק, לבנה, זיתים</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/mezze-window-800.webp" alt="שולחן סלטים מול חלון" loading="lazy"></div><figcaption class="figcap">מול שערי הברזל הכחולים</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/dough-spirals-800.webp" alt="בצק לפני אפייה" loading="lazy"></div><figcaption class="figcap">בצק שנילוש בידיים</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/nut-loaf-800.webp" alt="עוגת אגוזים" loading="lazy"></div><figcaption class="figcap">עוגת אגוזים ושוקולד</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/mezze-side-800.webp" alt="שולחן סלטים מצד" loading="lazy"></div><figcaption class="figcap">המגוון, מהצד</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/mezze-marble-800.webp" alt="שולחן סלטים על שיש" loading="lazy"></div><figcaption class="figcap">שיש ופורצלן</figcaption></figure>
+        <figure class="gal-item"><div class="ph"><img src="img/mezze-yogurt-800.webp" alt="לבנה ויוגורט" loading="lazy"></div><figcaption class="figcap">לבנה, זיתים, יוגורט</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ============ RESERVE ============ -->
+    <section class="sec-pad reserve" id="reserve">
+      <div class="wrap">
+        <svg class="orn" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M14 50 V28 a18 18 0 0 1 36 0 V50"/>
+          <path d="M8 50 h48" stroke-linecap="round"/>
+          <path d="M32 6 l2.4 6 6 2.4 -6 2.4 -2.4 6 -2.4 -6 -6 -2.4 6 -2.4z" fill="currentColor" stroke="none"/>
+        </svg>
+        <h2 data-reveal>בוקר <em>טוב.</em></h2>
+        <p class="sub" data-reveal>פונים לקבלה של <span class="ltr nw">The Way Inn</span> — ב-WhatsApp, בטלפון או באימייל. מזמינים <b>לפחות יום מראש</b>, ובבוקר השולחן מחכה לכם. <em>או, פשוט מצטרפים לבופה החי כשהוא רץ.</em></p>
+
+        <div class="cta-grid">
+          <a class="cta-card" data-reveal href="https://wa.me/972526881116?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A0%D7%A8%D7%A6%D7%94%20%D7%9C%D7%94%D7%96%D7%9E%D7%99%D7%9F%20%D7%90%D7%A8%D7%95%D7%97%D7%AA%20%D7%91%D7%95%D7%A7%D7%A8%20%D7%91%D7%9C%D7%94%20%D7%91%D7%95%D7%A4%D7%94%20%D7%9C%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%5B___%5D%20%D7%A2%D7%91%D7%95%D7%A8%20%5B___%5D%20%D7%A1%D7%95%D7%A2%D7%93%D7%99%D7%9D.%20%D7%AA%D7%95%D7%93%D7%94%21" target="_blank" rel="noopener">
+            <svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.16 19.6L3 29l6.6-1.74A13 13 0 1 0 16 3Zm0 23.74a10.7 10.7 0 0 1-5.46-1.5l-.39-.23-3.92 1.03 1.05-3.83-.25-.4A10.74 10.74 0 1 1 16 26.74Zm6-7.83c-.32-.16-1.92-.95-2.22-1.06s-.51-.16-.73.16-.84 1.06-1.03 1.28-.38.24-.7.08a8.8 8.8 0 0 1-2.6-1.6 9.7 9.7 0 0 1-1.8-2.24c-.19-.32 0-.5.14-.66.15-.15.32-.38.48-.57s.21-.32.32-.54.05-.4-.03-.57-.73-1.74-1-2.39-.53-.55-.73-.56h-.62a1.2 1.2 0 0 0-.87.4 3.62 3.62 0 0 0-1.14 2.7 6.27 6.27 0 0 0 1.33 3.36 14.4 14.4 0 0 0 5.55 4.9c.78.33 1.39.53 1.86.68a4.5 4.5 0 0 0 2.05.13 3.36 3.36 0 0 0 2.2-1.55 2.74 2.74 0 0 0 .19-1.55c-.08-.13-.29-.21-.61-.37Z"/></svg>
+            <span class="lb">WHATSAPP</span>
+            <span class="val ltr">+972 52-688-1116</span>
+            <span class="hint">הודעה מוכנה — רק תאריך וסועדים</span>
+          </a>
+          <a class="cta-card" data-reveal href="tel:+97273-7750045">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 17.5c-1.2 0-2.4-.2-3.6-.6-.4-.1-.8 0-1.1.2l-2.2 2.2a17.4 17.4 0 0 1-7.7-7.7l2.2-2.2c.3-.3.4-.7.2-1.1A12.6 12.6 0 0 1 7.2 4c0-.5-.5-1-1-1H2.5c-.5 0-1 .5-1 1 0 10 8.5 18.5 18.5 18.5.5 0 1-.5 1-1V18.5c0-.5-.5-1-1-1Z"/></svg>
+            <span class="lb">קבלה — טלפון</span>
+            <span class="val ltr">+972 73-7750045</span>
+            <span class="hint">להזמנה יום מראש</span>
+          </a>
+          <a class="cta-card" data-reveal href="mailto:info@thewayinn.co.il?subject=La%20Buffet%20%E2%80%94%20%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%90%D7%A8%D7%95%D7%97%D7%AA%20%D7%91%D7%95%D7%A7%D7%A8">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.4l8 5.2 8-5.2V6H4Zm0 12h16V8.8l-7.4 4.8a1 1 0 0 1-1.2 0L4 8.8V18Z"/></svg>
+            <span class="lb">אימייל</span>
+            <span class="val ltr">info@thewayinn.co.il</span>
+            <span class="hint">בקבלה של The Way Inn</span>
+          </a>
+        </div>
+
+        <div class="links" data-reveal>
+          <a href="https://wattsonworks.github.io/labuffet/" target="_blank" rel="noopener">האתר המלא של לה בופה ↗</a>
+          <a href="https://www.instagram.com/thewayinn1/" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="https://www.facebook.com/WayInnIsrael" target="_blank" rel="noopener">Facebook ↗</a>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-cell"><h4>שעות</h4><p><span class="ltr">08:00 – 10:30</span><span class="sm">הימים המדויקים — לאישור בקבלה</span></p></div>
+          <div class="info-cell"><h4>כתובת</h4><p>סמטת י״ז 23, צפת<span class="sm">בתוך The Way Inn, רובע האמנים</span></p></div>
+          <div class="info-cell"><h4>למי</h4><p>לאורחי המלון<span class="sm">פתוח לסועדים מבחוץ? לבירור בקבלה</span></p></div>
+          <div class="info-cell"><h4>כשרות / מחיר</h4><p>חלבי · צמחוני<span class="sm">פרטים מדויקים — בקבלה</span></p></div>
+        </div>
+
+        <div class="map-wrap" data-reveal>
+          <iframe
+            title="מפת The Way Inn בצפת"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=35.4907%2C32.9637%2C35.4977%2C32.9673&amp;layer=mapnik&amp;marker=32.965528%2C35.494152"></iframe>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=32.965528%2C35.494152" target="_blank" rel="noopener">פתח ב-Google Maps ↗</a>
+        </div>
+      </div>
     </section>
   </main>
 
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <p class="f-name">לה בופה · La Buffet</p>
+          <p>ארוחת הבוקר של <a href="https://thewayinn.co.il/" target="_blank" rel="noopener">The Way Inn</a>, צפת.</p>
+        </div>
+        <div>
+          <h4>שעות</h4>
+          <p><span class="ltr">08:00 – 10:30</span><br>מדי בוקר · ימים לאישור</p>
+        </div>
+        <div>
+          <h4>צור קשר</h4>
+          <p>
+            <a href="tel:+97273-7750045" class="ltr nw">+972 73-7750045</a><br>
+            <a href="https://wa.me/972526881116" target="_blank" rel="noopener">WhatsApp <span class="ltr nw">+972 52-688-1116</span></a><br>
+            <a href="mailto:info@thewayinn.co.il">info@thewayinn.co.il</a>
+          </p>
+        </div>
+        <div>
+          <h4>The Way Inn</h4>
+          <p>
+            <a href="https://thewayinn.co.il/" target="_blank" rel="noopener">thewayinn.co.il ↗</a><br>
+            <a href="https://www.instagram.com/thewayinn1/" target="_blank" rel="noopener">Instagram</a> ·
+            <a href="https://www.facebook.com/WayInnIsrael" target="_blank" rel="noopener">Facebook</a>
+          </p>
+        </div>
+      </div>
+      <div class="copyline">
+        <span>© <span data-year>2026</span> לה בופה · The Way Inn, צפת</span>
+        <span>אבי מור · עוסק מורשה · 303092126</span>
+        <span class="ltr">Design concept — GSAP · Three.js</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
   (function(){
-    'use strict';
-    gsap.registerPlugin(ScrollTrigger);
+    "use strict";
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var hasGSAP = typeof gsap !== "undefined";
+    if (reduced) document.documentElement.classList.add("no-motion");
+    if (hasGSAP) gsap.registerPlugin(ScrollTrigger);
 
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var finePointer  = window.matchMedia('(pointer: fine)').matches;
-    var isMobile     = window.matchMedia('(max-width: 760px)').matches;
-
-    /* ---------- smooth scroll (Lenis) ---------- */
+    /* ---------- smooth scroll ---------- */
     var lenis = null;
-    if (!reduceMotion && typeof Lenis !== 'undefined') {
-      lenis = new Lenis({ duration: 1.15, smoothWheel: true });
-      lenis.on('scroll', ScrollTrigger.update);
+    if (!reduced && typeof Lenis !== "undefined" && hasGSAP) {
+      lenis = new Lenis({ lerp: 0.09 });
+      lenis.on("scroll", ScrollTrigger.update);
       gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
       gsap.ticker.lagSmoothing(0);
+      lenis.stop();
+      window.__lenis = lenis;
     }
-    function scrollToTarget(target){
-      if (lenis) lenis.scrollTo(target, { offset: 0, duration: 1.4 });
-      else {
-        var el = document.querySelector(target);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-    document.querySelectorAll('[data-scroll]').forEach(function(a){
-      a.addEventListener('click', function(e){
-        var href = a.getAttribute('href');
-        if (href && href.charAt(0) === '#') {
-          e.preventDefault();
-          closeMenu();
-          scrollToTarget(href);
-        }
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener("click", function(e){
+        var target = document.querySelector(a.getAttribute("href"));
+        if (!target) return;
+        e.preventDefault();
+        closeMenu();
+        if (lenis) lenis.scrollTo(target, { offset: -60, duration: 1.5 });
+        else target.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
       });
     });
 
-    /* ---------- clock (Tel Aviv) ---------- */
-    function tick(){
-      var t = new Intl.DateTimeFormat('en-GB', { hour:'2-digit', minute:'2-digit', timeZone:'Asia/Jerusalem' }).format(new Date());
-      document.querySelectorAll('[data-clock]').forEach(function(el){ el.textContent = t; });
-    }
-    tick(); setInterval(tick, 30000);
+    /* ---------- hero video ---------- */
+    var vid = document.querySelector("[data-hero-video]");
+    if (reduced) { vid.removeAttribute("autoplay"); vid.pause(); }
+    else { window.addEventListener("load", function(){ var p = vid.play(); if (p && p.catch) p.catch(function(){}); }); }
 
-    /* ---------- custom cursor ---------- */
-    if (finePointer && !reduceMotion) {
-      var dot  = document.querySelector('.cursor-dot');
-      var ring = document.querySelector('.cursor-ring');
-      var dx = gsap.quickTo(dot,  'x', { duration: .08, ease: 'power2' }),
-          dy = gsap.quickTo(dot,  'y', { duration: .08, ease: 'power2' }),
-          rx = gsap.quickTo(ring, 'x', { duration: .35, ease: 'power3' }),
-          ry = gsap.quickTo(ring, 'y', { duration: .35, ease: 'power3' });
-      window.addEventListener('mousemove', function(e){
-        dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
-      });
-      document.querySelectorAll('a, button, [data-hover]').forEach(function(el){
-        el.addEventListener('mouseenter', function(){ ring.classList.add('is-hover'); });
-        el.addEventListener('mouseleave', function(){ ring.classList.remove('is-hover'); });
-      });
+    /* ---------- preloader ---------- */
+    var pre = document.querySelector("[data-preloader]");
+    var arc = document.querySelector("[data-arc]");
+    var spark = document.querySelector("[data-spark]");
+    var done = false;
+    function finish(){
+      if (done) return;
+      done = true;
+      if (!hasGSAP || reduced) {
+        pre.style.display = "none";
+        if (lenis) lenis.start();
+        return;
+      }
+      gsap.timeline()
+        .to(pre, { yPercent: -100, duration: 1, ease: "power4.inOut", delay: 0.2 })
+        .add(function(){ pre.style.display = "none"; if (lenis) lenis.start(); })
+        .add(introTimeline(), "-=0.45");
     }
+    function introTimeline(){
+      return gsap.timeline()
+        .to("[data-hero-line]", { yPercent: 0, duration: 1.15, ease: "power4.out", stagger: 0.14 })
+        .to("[data-hero-fade]", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", stagger: 0.1 }, "-=0.7");
+    }
+    if (hasGSAP && !reduced) {
+      var len = arc.getTotalLength();
+      gsap.set(arc, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.set("[data-hero-line]", { yPercent: 110 });
+      gsap.set("[data-hero-fade]", { opacity: 0, y: 22 });
+      gsap.timeline()
+        .to(arc, { strokeDashoffset: 0, duration: 1.05, ease: "power2.inOut" })
+        .to(spark, { opacity: 1, duration: 0.3 }, "-=0.2");
+    }
+    window.addEventListener("load", finish);
+    setTimeout(finish, 4500);
 
-    /* ---------- mobile menu ---------- */
-    var burger = document.getElementById('burger');
-    var menu = document.getElementById('menu');
-    var menuOpen = false;
-    var menuLinks = menu.querySelectorAll('a');
-    function openMenu(){
-      menuOpen = true;
-      document.body.classList.add('menu-open');
-      burger.setAttribute('aria-expanded', 'true');
-      menu.setAttribute('aria-hidden', 'false');
-      gsap.set(menu, { visibility: 'visible' });
-      gsap.to(menu, { clipPath: 'inset(0% 0px 0% 0px)', duration: .7, ease: 'power4.inOut' });
-      gsap.fromTo(menuLinks, { yPercent: 60, opacity: 0 },
-        { yPercent: 0, opacity: 1, duration: .6, stagger: .06, delay: .25, ease: 'power3.out' });
-      if (lenis) lenis.stop();
+    /* ---------- header / menu ---------- */
+    var head = document.querySelector("[data-head]");
+    function headState(){
+      head.classList.toggle("is-solid", window.scrollY > window.innerHeight * 0.75);
     }
+    window.addEventListener("scroll", headState, { passive: true });
+    headState();
+
+    var burger = document.querySelector("[data-burger]");
+    var menu = document.querySelector("[data-menu]");
     function closeMenu(){
-      if (!menuOpen) return;
-      menuOpen = false;
-      document.body.classList.remove('menu-open');
-      burger.setAttribute('aria-expanded', 'false');
-      menu.setAttribute('aria-hidden', 'true');
-      gsap.to(menu, { clipPath: 'inset(0% 0px 100% 0px)', duration: .6, ease: 'power4.inOut',
-        onComplete: function(){ gsap.set(menu, { visibility: 'hidden' }); } });
+      burger.classList.remove("is-open");
+      menu.classList.remove("is-open");
+      head.classList.remove("is-menu");
+      burger.setAttribute("aria-expanded", "false");
       if (lenis) lenis.start();
     }
-    burger.addEventListener('click', function(){ menuOpen ? closeMenu() : openMenu(); });
-
-    /* ---------- THREE.js particle wave ---------- */
-    var heroVisible = true;
-    try {
-      var canvas = document.getElementById('webgl');
-      var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false, alpha: true, powerPreference: 'high-performance' });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera(60, 1, .1, 60);
-      camera.position.set(0, 1.6, 3.4);
-      camera.lookAt(0, 0, 0);
-
-      var GRID = isMobile ? 90 : 150, SPREAD = 11;
-      var count = GRID * GRID;
-      var positions = new Float32Array(count * 3);
-      var seeds = new Float32Array(count);
-      var k = 0;
-      for (var iy = 0; iy < GRID; iy++) {
-        for (var ix = 0; ix < GRID; ix++) {
-          positions[k * 3]     = (ix / (GRID - 1) - .5) * SPREAD;
-          positions[k * 3 + 1] = 0;
-          positions[k * 3 + 2] = (iy / (GRID - 1) - .5) * SPREAD;
-          seeds[k] = Math.random();
-          k++;
-        }
-      }
-      var geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geo.setAttribute('aSeed', new THREE.BufferAttribute(seeds, 1));
-
-      var mat = new THREE.ShaderMaterial({
-        transparent: true,
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
-        uniforms: {
-          uTime:   { value: 0 },
-          uSize:   { value: (isMobile ? 26 : 34) * Math.min(window.devicePixelRatio, 2) },
-          uColorA: { value: new THREE.Color('#7c5cff') },
-          uColorB: { value: new THREE.Color('#d6f54d') }
-        },
-        vertexShader: [
-          'uniform float uTime;',
-          'uniform float uSize;',
-          'attribute float aSeed;',
-          'varying float vElev;',
-          'varying float vSeed;',
-          'void main(){',
-          '  vec3 p = position;',
-          '  float d = length(p.xz) * 0.55;',
-          '  p.y += sin(p.x * 0.9 + uTime * 0.6) * 0.32;',
-          '  p.y += cos(p.z * 1.1 + uTime * 0.45) * 0.28;',
-          '  p.y += sin(d * 2.2 - uTime * 0.8) * 0.22;',
-          '  vElev = p.y;',
-          '  vSeed = aSeed;',
-          '  vec4 mv = modelViewMatrix * vec4(p, 1.0);',
-          '  gl_Position = projectionMatrix * mv;',
-          '  gl_PointSize = uSize * (0.5 + vElev * 0.5 + aSeed * 0.3) * (1.0 / -mv.z);',
-          '}'
-        ].join('\n'),
-        fragmentShader: [
-          'uniform vec3 uColorA;',
-          'uniform vec3 uColorB;',
-          'varying float vElev;',
-          'varying float vSeed;',
-          'void main(){',
-          '  float dist = length(gl_PointCoord - 0.5);',
-          '  float alpha = smoothstep(0.5, 0.05, dist);',
-          '  vec3 col = mix(uColorA, uColorB, smoothstep(-0.6, 0.8, vElev));',
-          '  gl_FragColor = vec4(col, alpha * (0.35 + vSeed * 0.45));',
-          '}'
-        ].join('\n')
-      });
-      scene.add(new THREE.Points(geo, mat));
-
-      var mouse = { x: 0, y: 0 }, cam = { x: 0, y: 1.6 };
-      if (finePointer) {
-        window.addEventListener('mousemove', function(e){
-          mouse.x = (e.clientX / window.innerWidth - .5) * 2;
-          mouse.y = (e.clientY / window.innerHeight - .5) * 2;
-        });
-      }
-      function sizeRenderer(){
-        var hero = document.getElementById('hero');
-        var w = hero.clientWidth, h = hero.clientHeight;
-        renderer.setSize(w, h, false);
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-      }
-      sizeRenderer();
-      window.addEventListener('resize', sizeRenderer);
-
-      var clock = new THREE.Clock();
-      gsap.ticker.add(function(){
-        if (!heroVisible || document.hidden) return;
-        if (!reduceMotion) mat.uniforms.uTime.value = clock.getElapsedTime();
-        cam.x += (mouse.x * .5 - cam.x) * .04;
-        cam.y += (1.6 - mouse.y * .25 - cam.y) * .04;
-        camera.position.x = cam.x;
-        camera.position.y = cam.y;
-        camera.lookAt(0, 0, 0);
-        renderer.render(scene, camera);
-      });
-      new IntersectionObserver(function(entries){
-        heroVisible = entries[0].isIntersecting;
-      }, { threshold: 0 }).observe(document.getElementById('hero'));
-    } catch (err) {
-      console.warn('WebGL disabled:', err);
-    }
-
-    /* ---------- text splitting ---------- */
-    var heroChars = [];
-    document.querySelectorAll('#heroTitle .line > span').forEach(function(span){
-      var text = span.textContent;
-      span.textContent = '';
-      text.split('').forEach(function(ch){
-        var c = document.createElement('span');
-        c.style.display = 'inline-block';
-        if (ch === '®') c.className = 'reg';
-        c.textContent = ch;
-        span.appendChild(c);
-        heroChars.push(c);
-      });
+    burger.addEventListener("click", function(){
+      var open = !menu.classList.contains("is-open");
+      burger.classList.toggle("is-open", open);
+      menu.classList.toggle("is-open", open);
+      head.classList.toggle("is-menu", open);
+      burger.setAttribute("aria-expanded", String(open));
+      if (lenis) { open ? lenis.stop() : lenis.start(); }
     });
 
-    var manifesto = document.getElementById('manifesto');
-    (function splitWords(el){
-      var nodes = Array.prototype.slice.call(el.childNodes);
-      nodes.forEach(function(node){
-        if (node.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          node.textContent.split(/(\s+)/).forEach(function(part){
-            if (!part) return;
-            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
-            var w = document.createElement('span');
-            w.className = 'w';
-            w.textContent = part;
-            frag.appendChild(w);
+    /* ---------- 3D old city of Safed ---------- */
+    (function(){
+      var canvas = document.getElementById("cityCanvas");
+      var fallback = function(){
+        canvas.style.display = "none";
+        document.querySelector("[data-city-fallback]").style.display = "block";
+      };
+      if (typeof THREE === "undefined") { fallback(); return; }
+      try {
+        var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        var scene = new THREE.Scene();
+        scene.fog = new THREE.Fog(0xf0dab8, 18, 95);
+        var camera = new THREE.PerspectiveCamera(52, 1, 0.1, 200);
+
+        /* light: golden hour over the Galilee */
+        scene.add(new THREE.HemisphereLight(0xbdd7e8, 0xd9bf9a, 0.72));
+        var sun = new THREE.DirectionalLight(0xffd9a0, 1.4);
+        sun.position.set(16, 22, 10);
+        sun.castShadow = true;
+        sun.shadow.mapSize.set(2048, 2048);
+        sun.shadow.camera.left = -40; sun.shadow.camera.right = 40;
+        sun.shadow.camera.top = 45; sun.shadow.camera.bottom = -25;
+        sun.shadow.camera.far = 120;
+        sun.shadow.bias = -0.0008;
+        var sunTarget = new THREE.Object3D();
+        sunTarget.position.set(0, 0, -28);
+        scene.add(sunTarget);
+        sun.target = sunTarget;
+        scene.add(sun);
+
+        var M = {
+          plaster: [new THREE.MeshStandardMaterial({ color: 0xeadfc8, roughness: .95 }),
+                    new THREE.MeshStandardMaterial({ color: 0xe2d3b6, roughness: .95 }),
+                    new THREE.MeshStandardMaterial({ color: 0xd9c8a8, roughness: .95 }),
+                    new THREE.MeshStandardMaterial({ color: 0xcfc0a4, roughness: .95 })],
+          blue:    new THREE.MeshStandardMaterial({ color: 0x3f7396, roughness: .6 }),
+          blueDeep:new THREE.MeshStandardMaterial({ color: 0x2f5d7c, roughness: .6 }),
+          dome:    new THREE.MeshStandardMaterial({ color: 0xf0e8d6, roughness: .85 }),
+          green:   new THREE.MeshStandardMaterial({ color: 0x46603f, roughness: .95 }),
+          trunk:   new THREE.MeshStandardMaterial({ color: 0x6e5236, roughness: .95 }),
+          ground:  new THREE.MeshStandardMaterial({ color: 0xd9c5a0, roughness: 1 }),
+          stone:   new THREE.MeshStandardMaterial({ color: 0xc9b896, roughness: 1 }),
+          lamp:    new THREE.MeshBasicMaterial({ color: 0xffc46b })
+        };
+
+        var SLOPE = 0.12;
+        function elev(z){ return -z * SLOPE; }
+
+        /* sloped ground */
+        var groundGeo = new THREE.PlaneGeometry(60, 120);
+        var ground = new THREE.Mesh(groundGeo, M.ground);
+        ground.rotation.x = -Math.PI / 2 + Math.atan(SLOPE);
+        ground.position.set(0, elev(-55) / 2 - 0.06, -55 / 2 - 27);
+        ground.position.z = -28;
+        ground.position.y = elev(-28) - 0.05;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        function house(x, z, big){
+          var g = new THREE.Group();
+          var w = (big ? 4.2 : 2.8) + Math.random() * 1.6;
+          var h = (big ? 3.6 : 2.4) + Math.random() * 1.8;
+          var d = 3 + Math.random() * 2;
+          var mat = M.plaster[(Math.random() * M.plaster.length) | 0];
+          var body = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+          body.position.y = h / 2;
+          body.castShadow = true;
+          body.receiveShadow = true;
+          g.add(body);
+
+          /* door facing the alley */
+          var side = x < 0 ? 1 : -1;
+          var door = new THREE.Group();
+          var dw = 0.62, dh = 1.15;
+          var slab = new THREE.Mesh(new THREE.PlaneGeometry(dw, dh), Math.random() < .7 ? M.blue : M.blueDeep);
+          slab.position.y = dh / 2;
+          var arch = new THREE.Mesh(new THREE.CircleGeometry(dw / 2, 14, 0, Math.PI), slab.material);
+          arch.position.y = dh;
+          door.add(slab); door.add(arch);
+          door.position.set(side * (w / 2 + 0.01), 0, (Math.random() - 0.5) * (d * 0.4));
+          door.rotation.y = side * Math.PI / 2;
+          g.add(door);
+
+          /* windows */
+          var wins = 1 + (Math.random() * 3 | 0);
+          for (var i = 0; i < wins; i++) {
+            var win = new THREE.Mesh(new THREE.PlaneGeometry(0.42, 0.6), Math.random() < .6 ? M.blue : M.blueDeep);
+            win.position.set(side * (w / 2 + 0.01), h * 0.55 + Math.random() * h * 0.3, (Math.random() - 0.5) * d * 0.7);
+            win.rotation.y = side * Math.PI / 2;
+            g.add(win);
+          }
+
+          /* dome or upper floor */
+          var r = Math.random();
+          if (r < 0.3) {
+            var dome = new THREE.Mesh(new THREE.SphereGeometry(Math.min(w, d) * 0.32, 14, 10, 0, Math.PI * 2, 0, Math.PI / 2), M.dome);
+            dome.position.y = h;
+            g.add(dome);
+          } else if (r < 0.55) {
+            var w2 = w * 0.6, h2 = 1.4 + Math.random(), d2 = d * 0.65;
+            var top = new THREE.Mesh(new THREE.BoxGeometry(w2, h2, d2), M.plaster[(Math.random() * M.plaster.length) | 0]);
+            top.position.set((Math.random() - 0.5) * (w - w2) * 0.5, h + h2 / 2, 0);
+            top.castShadow = true;
+            g.add(top);
+          }
+
+          g.position.set(x, elev(z), z);
+          g.rotation.y = (Math.random() - 0.5) * 0.14;
+          scene.add(g);
+        }
+
+        function cypress(x, z){
+          var g = new THREE.Group();
+          var t = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.09, 0.5), M.trunk);
+          t.position.y = 0.25;
+          var c1 = new THREE.Mesh(new THREE.ConeGeometry(0.42, 1.7, 8), M.green);
+          c1.position.y = 1.3;
+          c1.castShadow = true;
+          var c2 = new THREE.Mesh(new THREE.ConeGeometry(0.3, 1.2, 8), M.green);
+          c2.position.y = 2.1;
+          c2.castShadow = true;
+          g.add(t); g.add(c1); g.add(c2);
+          g.position.set(x, elev(z), z);
+          scene.add(g);
+        }
+
+        function lamp(x, z){
+          var g = new THREE.Group();
+          var pole = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 2.1), M.stone);
+          pole.position.y = 1.05;
+          var bulb = new THREE.Mesh(new THREE.SphereGeometry(0.09, 8, 8), M.lamp);
+          bulb.position.y = 2.15;
+          g.add(pole); g.add(bulb);
+          g.position.set(x, elev(z), z);
+          scene.add(g);
+        }
+
+        /* the alley: houses on both sides, winding hill */
+        var z;
+        for (z = 2; z > -52; z -= 4.4) {
+          var bend = Math.sin(z * 0.13) * 1.1;
+          house(bend - (3.4 + Math.random() * 2.4), z - Math.random() * 2, Math.random() < .35);
+          house(bend + (3.4 + Math.random() * 2.4), z - 2 - Math.random() * 2, Math.random() < .35);
+          if (Math.random() < .5) cypress(bend + (Math.random() < .5 ? -1 : 1) * (5.4 + Math.random() * 3), z - Math.random() * 3);
+          if (Math.random() < .55) lamp(bend + (Math.random() < .5 ? -1.7 : 1.7), z - 1);
+        }
+        /* backdrop hill of houses */
+        for (var i = 0; i < 26; i++) {
+          house((Math.random() - 0.5) * 44, -54 - Math.random() * 22, true);
+        }
+
+        /* focal: the blue gate of The Way Inn */
+        var gate = new THREE.Group();
+        var colGeo = new THREE.BoxGeometry(0.5, 3.2, 0.5);
+        var c1 = new THREE.Mesh(colGeo, M.stone); c1.position.set(-1.35, 1.6, 0);
+        var c2 = new THREE.Mesh(colGeo, M.stone); c2.position.set(1.35, 1.6, 0);
+        var archTop = new THREE.Mesh(new THREE.TorusGeometry(1.35, 0.26, 10, 24, Math.PI), M.stone);
+        archTop.position.y = 3.2;
+        var doorGlow = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3), new THREE.MeshBasicMaterial({ color: 0xffd9a0, transparent: true, opacity: 0.85 }));
+        doorGlow.position.y = 1.5; doorGlow.position.z = -0.1;
+        gate.add(c1); gate.add(c2); gate.add(archTop); gate.add(doorGlow);
+        var GZ = -46;
+        gate.position.set(Math.sin(GZ * 0.13) * 1.1, elev(GZ), GZ);
+        scene.add(gate);
+        var glow = new THREE.PointLight(0xffc46b, 1.1, 16);
+        glow.position.set(gate.position.x, elev(GZ) + 1.8, GZ + 1.2);
+        scene.add(glow);
+
+        /* camera path up the alley */
+        function alleyPoint(z, y){
+          return new THREE.Vector3(Math.sin(z * 0.13) * 1.1, elev(z) + y, z);
+        }
+        var path = new THREE.CatmullRomCurve3([
+          alleyPoint(10, 2.2),
+          alleyPoint(-2, 2.4),
+          alleyPoint(-14, 2.6),
+          alleyPoint(-26, 2.8),
+          alleyPoint(-34, 2.9),
+          alleyPoint(-39.5, 2.55)
+        ]);
+        var progress = { t: reduced ? 0.55 : 0 };
+        function setCam(){
+          var p = path.getPoint(Math.min(progress.t, 1));
+          camera.position.copy(p);
+          var ahead = path.getPoint(Math.min(progress.t + 0.07, 1));
+          var lookY = ahead.y + 0.4 + (1 - progress.t) * 0.6;
+          camera.lookAt(new THREE.Vector3(
+            THREE.MathUtils.lerp(ahead.x, gate.position.x, progress.t * 0.7),
+            THREE.MathUtils.lerp(lookY, elev(GZ) + 1.9, progress.t * 0.7),
+            THREE.MathUtils.lerp(ahead.z, GZ, progress.t * 0.4)
+          ));
+        }
+        function size(){
+          var w = canvas.clientWidth || window.innerWidth;
+          var h = canvas.clientHeight || window.innerHeight;
+          renderer.setSize(w, h, false);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        }
+        size();
+        window.addEventListener("resize", size);
+        setCam();
+
+        var inView = true, t0 = performance.now();
+        renderer.setAnimationLoop(function(){
+          if (!inView || document.hidden) return;
+          /* subtle warm flicker on the gate light */
+          glow.intensity = 1.05 + Math.sin((performance.now() - t0) * 0.004) * 0.12;
+          setCam();
+          renderer.render(scene, camera);
+        });
+
+        if (hasGSAP) {
+          ScrollTrigger.create({
+            trigger: ".city-sec",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+            onUpdate: function(self){ if (!reduced) progress.t = self.progress; },
+            onToggle: function(self){ inView = self.isActive; }
           });
-          el.replaceChild(frag, node);
-        } else if (node.nodeType === 1) {
-          node.classList.add('w');
+          /* keep rendering a touch outside too, for caption transitions */
+          ScrollTrigger.create({
+            trigger: ".city-sec",
+            start: "top bottom",
+            end: "bottom top",
+            onToggle: function(self){ inView = self.isActive; }
+          });
+          /* captions */
+          gsap.to("[data-cap-a]", {
+            opacity: 1, y: 0, duration: 1, ease: "power3.out",
+            scrollTrigger: { trigger: ".city-sec", start: "top 60%" }
+          });
+          gsap.to("[data-cap-a]", {
+            opacity: 0, y: -20, ease: "none",
+            scrollTrigger: { trigger: ".city-sec", start: "55% bottom", end: "70% bottom", scrub: true }
+          });
+          gsap.to("[data-cap-b]", {
+            opacity: 1, y: 0, ease: "none",
+            scrollTrigger: { trigger: ".city-sec", start: "78% bottom", end: "92% bottom", scrub: true }
+          });
+          gsap.to("[data-city-hint]", {
+            opacity: 0, ease: "none",
+            scrollTrigger: { trigger: ".city-sec", start: "top top", end: "25% top", scrub: true }
+          });
+        } else {
+          document.querySelector("[data-cap-a]").style.opacity = 1;
+          document.querySelector("[data-cap-b]").style.opacity = 1;
         }
-      });
-    })(manifesto);
-
-    /* ---------- preloader + intro ---------- */
-    var pre = document.getElementById('preloader');
-    var countEl = document.getElementById('count');
-    var barEl = document.getElementById('bar');
-    var introPlayed = false;
-
-    gsap.set(heroChars, { yPercent: 115 });
-    gsap.set('.hero__eyebrow, .hero__meta', { opacity: 0, y: 24 });
-    gsap.set('.nav', { opacity: 0 });
-
-    function playIntro(){
-      if (introPlayed) return;
-      introPlayed = true;
-      var tl = gsap.timeline({ defaults: { ease: 'power4.inOut' } });
-      tl.to(pre, { yPercent: -100, duration: .9 })
-        .set(pre, { display: 'none' })
-        .to(heroChars, { yPercent: 0, duration: 1.1, stagger: .035, ease: 'power4.out' }, '-=.45')
-        .to('.hero__eyebrow, .hero__meta', { opacity: 1, y: 0, duration: .8, stagger: .12, ease: 'power3.out' }, '-=.7')
-        .to('.nav', { opacity: 1, duration: .6, ease: 'power2.out' }, '-=.5');
-    }
-
-    if (reduceMotion) {
-      pre.style.display = 'none';
-      gsap.set(heroChars, { yPercent: 0 });
-      gsap.set('.hero__eyebrow, .hero__meta, .nav', { opacity: 1, y: 0 });
-      introPlayed = true;
-    } else {
-      var progress = { v: 0 };
-      gsap.to(progress, {
-        v: 100, duration: 2, ease: 'power2.inOut',
-        onUpdate: function(){
-          var v = Math.round(progress.v);
-          countEl.textContent = v;
-          barEl.style.transform = 'scaleX(' + (v / 100) + ')';
-        },
-        onComplete: playIntro
-      });
-      setTimeout(playIntro, 4500); /* safety net */
-      /* hard fallback: if rAF is throttled (hidden tab), clear without animation */
-      setTimeout(function(){
-        if (getComputedStyle(pre).display !== 'none') {
-          pre.style.display = 'none';
-          gsap.set(heroChars, { yPercent: 0 });
-          gsap.set('.hero__eyebrow, .hero__meta, .nav', { opacity: 1, y: 0 });
-          introPlayed = true;
-        }
-      }, 7000);
-    }
+      } catch (err) { fallback(); }
+    })();
 
     /* ---------- scroll animations ---------- */
-    if (!reduceMotion) {
-      /* hero parallax-out */
-      gsap.to('.hero__content', {
-        yPercent: -18, opacity: .25, ease: 'none',
-        scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
-      });
-      gsap.to('.hero__canvas', {
-        opacity: 0, ease: 'none',
-        scrollTrigger: { trigger: '#hero', start: '40% top', end: 'bottom top', scrub: true }
-      });
-
-      /* manifesto word scrub */
-      gsap.to('#manifesto .w', {
-        opacity: 1, stagger: .06, ease: 'none',
-        scrollTrigger: { trigger: '#manifesto', start: 'top 78%', end: 'bottom 45%', scrub: .4 }
-      });
-
-      /* stat counters */
-      document.querySelectorAll('[data-counter]').forEach(function(el){
-        var target = parseInt(el.getAttribute('data-counter'), 10);
-        var obj = { v: 0 };
-        ScrollTrigger.create({
-          trigger: el, start: 'top 88%', once: true,
-          onEnter: function(){
-            gsap.to(obj, { v: target, duration: 1.6, ease: 'power3.out',
-              onUpdate: function(){ el.textContent = Math.round(obj.v); } });
-          }
+    if (hasGSAP && !reduced) {
+      document.querySelectorAll("[data-reveal]").forEach(function(el){
+        gsap.to(el, {
+          opacity: 1, y: 0, duration: 1.25, ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 88%" }
         });
       });
-
-      /* card stack: previous card recedes as next covers it */
-      var cards = gsap.utils.toArray('.card');
-      cards.forEach(function(card, i){
-        var bg = card.querySelector('.card__bg');
-        gsap.fromTo(bg, { yPercent: -8 }, {
-          yPercent: 8, ease: 'none',
-          scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: true }
-        });
-        var screen = card.querySelector('.card__screen');
-        gsap.fromTo(screen, { y: 50, rotate: -2 }, {
-          y: -50, rotate: 2, ease: 'none',
-          scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: true }
-        });
-        if (i > 0) {
-          var prev = cards[i - 1];
-          gsap.to(prev, {
-            scale: .94, ease: 'none',
-            scrollTrigger: { trigger: card, start: 'top bottom', end: 'top 9%', scrub: true }
-          });
-          gsap.to(prev.querySelector('.card__shade'), {
-            opacity: .55, ease: 'none',
-            scrollTrigger: { trigger: card, start: 'top bottom', end: 'top 9%', scrub: true }
-          });
-        }
-      });
-
-      /* section reveals */
-      gsap.utils.toArray('.sect-head, .caps .cap, .awards__grid > div, .contact > .u-label, .contact__big, .contact__mail').forEach(function(el){
-        gsap.from(el, {
-          y: 40, opacity: 0, duration: .9, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 92%', once: true }
+      document.querySelectorAll("[data-clip]").forEach(function(el){
+        gsap.fromTo(el, { clipPath: "inset(12% 8% 12% 8%)" }, {
+          clipPath: "inset(0% 0% 0% 0%)", duration: 1.5, ease: "power3.inOut",
+          scrollTrigger: { trigger: el, start: "top 85%" }
         });
       });
+      document.querySelectorAll("[data-plx]").forEach(function(img){
+        gsap.fromTo(img, { yPercent: -6, scale: 1.12 }, {
+          yPercent: 6, scale: 1.12, ease: "none",
+          scrollTrigger: { trigger: img.closest(".ph") || img, start: "top bottom", end: "bottom top", scrub: true }
+        });
+      });
+      window.addEventListener("load", function(){ ScrollTrigger.refresh(); });
     } else {
-      gsap.set('#manifesto .w', { opacity: 1 });
-      document.querySelectorAll('[data-counter]').forEach(function(el){
-        el.textContent = el.getAttribute('data-counter');
+      document.querySelectorAll("[data-hero-fade],[data-hero-line]").forEach(function(el){
+        el.style.opacity = 1; el.style.transform = "none";
       });
     }
+
+    document.querySelector("[data-year]").textContent = new Date().getFullYear();
   })();
   </script>
 </body>
